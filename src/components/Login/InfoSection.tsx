@@ -2,10 +2,9 @@
 
 import styled from 'styled-components';
 
-export const Presentation = styled.div`
-	width: 100%;
+export const InfoSection = styled.div`
+	width: 55%;
 	height: auto;
-	min-width: 507px;
 	padding: 12px 24px;
 	border-top-left-radius: 7px;
 	border-bottom-left-radius: 7px;
@@ -29,6 +28,7 @@ export const Presentation = styled.div`
 
 	p {
 		color: white;
-		font-size: 16px
+		font-size: 16px;
 	}
+
 `;

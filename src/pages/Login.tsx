@@ -1,13 +1,13 @@
-import { Container } from '../components/Login/Container';
-import { FormLogin } from '../components/Login/FormLogin';
-import { Presentation } from '../components/Login/Presentation';
-import { TweeterLogin } from '../components/Login/TweeterLogin';
+import { InfoSection } from "../components/Login/InfoSection";
+import { LoginForm } from "../components/Login/LoginForm";
+import { MainLogin } from "../components/Login/MainLogin";
+import { SectionWrapper } from "../components/Login/SectionWrapper";
 
 export const Login = () => {
 	return (
-		<Container>
-			<TweeterLogin>
-				<Presentation>
+		<MainLogin>
+			<SectionWrapper>
+				<InfoSection>
 					<h1>Growtwitter</h1>
 					<small>Trabalho final do bloco intermediário</small>
 
@@ -18,8 +18,8 @@ export const Login = () => {
 						comunidade que valoriza a liberdade de expressão, a conexão com
 						pessoas de todo o mundo e a disseminação de ideias.
 					</p>
-				</Presentation>
-				<FormLogin>
+				</InfoSection>
+				<LoginForm>
 					<h2>Entrar no Growtwitter</h2>
 					<div>
 						<label htmlFor='username'>Username</label>
@@ -37,8 +37,8 @@ export const Login = () => {
 					</div>
 
 					<button>Entrar</button>
-				</FormLogin>
-			</TweeterLogin>
-		</Container>
+				</LoginForm>
+			</SectionWrapper>
+		</MainLogin>
 	);
 };

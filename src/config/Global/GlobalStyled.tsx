@@ -12,4 +12,8 @@ export const GlobalStyle = createGlobalStyle`
     body {
         font-family: "Karla", sans-serif;
     }
+
+    a {
+        text-decoration: none
+    }
 `;
