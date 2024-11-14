@@ -9,7 +9,11 @@ export const GlobalStyle = createGlobalStyle`
         box-sizing: border-box;
     }
 
-    body {
+    html {
+        font-family: "Karla", sans-serif;
+    }
+
+    button {
         font-family: "Karla", sans-serif;
     }
 

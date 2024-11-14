@@ -1,0 +1,16 @@
+export { default as iconeX } from './X.svg';
+export { default as iconeCalendario } from './icone_calendario.svg';
+export { default as iconeCompartilhar } from './icone_compartilhar.svg';
+export { default as iconeCurtir } from './icone_curtir.svg';
+export { default as iconeExplorar } from './icone_explorar.svg';
+export { default as iconeExplorarSelecionado } from './icone_explorar_selecionado.svg';
+export { default as iconeMarcaçãoFotoBanner } from './icone_marcaçao_foto_banner.svg';
+export { default as iconePaginaInicial } from './icone_pagina_inicial.svg';
+export { default as iconePaginaInicialSelecionado } from './icone_pagina_inicial_selecionado.svg';
+export { default as iconePerfil } from './icone_perfil.svg';
+export { default as iconePerfilSelecionado } from './icone_perfil_selecionado.svg';
+export { default as iconeResponder } from './icone_responder.svg';
+export { default as iconeRetweet } from './icone_retweet.svg';
+export { default as iconeSeta } from './icone_seta.svg';
+export { default as iconeVer } from './icone_ver.svg';
+export { default as iconeLogoGrowtweet } from './logo_growtweet.svg';
