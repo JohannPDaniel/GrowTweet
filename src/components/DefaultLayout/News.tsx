@@ -1,12 +1,19 @@
-import { Link } from "react-router-dom";
 import styled from 'styled-components';
 
-export const News = styled.div`
+interface NewsProps {
+	$marginTop?: boolean;
+}
+
+export const News = styled.div<NewsProps>`
 	width: 100%;
-    height: auto;
+	height: auto;
 	display: flex;
 	flex-direction: column;
-	margin-top: 10px;
+	margin-top: ${({ $marginTop }) => ($marginTop ? '12px' : '10px')};
+
+	&:first-child {
+		margin-top: 5px;
+	}
 
 	small {
 		font-size: 10px;
@@ -17,15 +24,5 @@ export const News = styled.div`
 		font-size: 12px;
 		color: #333333;
 		font-weight: 700;
-	}
-`;
-
-export const StyledLink = styled(Link)`
-	font-size: 10px;
-	color: #007bff;
-    margin-top: auto;
-
-	&:hover {
-		color: #0056b3;
 	}
 `;

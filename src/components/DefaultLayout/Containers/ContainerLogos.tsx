@@ -4,7 +4,8 @@ import {
 	iconePaginaInicialSelecionado,
 	iconePerfil,
 } from '../../../assets/Imagens/light_color';
-import { Button, Icone, LinkNav } from '../../../components/DefaultLayout';
+import { Button, Icone } from '../../../components/DefaultLayout';
+import { StyledLink } from '../StyledLink';
 import { ContainerLogosStyled } from './styled';
 
 const icons = [
@@ -36,7 +37,13 @@ export const ContainerLogos = () => {
 							src={icon.image}
 							alt={icon.label}
 						/>
-						<LinkNav to=''>{icon.label}</LinkNav>
+						<StyledLink
+							to=''
+							$fontSize
+							$color
+							$hover>
+							{icon.label}
+						</StyledLink>
 					</Icone>
 				))}
 			</div>

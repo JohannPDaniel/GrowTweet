@@ -1,4 +1,5 @@
-import { News, StyledLink } from '../../../components/DefaultLayout';
+import { News } from '../../../components/DefaultLayout';
+import { StyledLink } from '../StyledLink';
 import { ContainerNewsStyled } from './styled';
 
 const breakingNews = [
