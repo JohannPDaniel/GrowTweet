@@ -17,9 +17,6 @@ export const DefaultLayout = ({ children }: DefaultLayoutProps) => {
 			<ContainerNav />
 			<ContainerContentStyled>{children}</ContainerContentStyled>
 			<ContainerNews />
-			<div>
-				<div></div>
-			</div>
 		</ContainerStyled>
 	);
 };

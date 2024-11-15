@@ -7,6 +7,11 @@ export const Icone = styled.div`
 	display: flex;
 	align-items: center;
 	gap: 8px;
+	margin-top: 10px;
+
+	&:first-child {
+		margin-top: 20px
+	}
 
 	img {
 		width: 100%;
@@ -15,5 +20,4 @@ export const Icone = styled.div`
 		max-height: 12.5px;
 		margin-left: 10px;
 	}
-
 `;

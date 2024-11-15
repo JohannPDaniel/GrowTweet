@@ -10,10 +10,6 @@ export const ContainerLogosStyled = styled.div`
 		width: 100%;
 		height: auto;
 		max-width: 80px;
-		margin-left: 10px;
-	}
-
-	div {
-		margin-top: 10px;
+		margin: 0 0 10px 10px;
 	}
 `;

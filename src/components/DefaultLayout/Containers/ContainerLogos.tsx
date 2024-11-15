@@ -1,16 +1,18 @@
+import { useState } from 'react';
 import {
 	iconeExplorar,
 	iconeLogoGrowtweet,
-	iconePaginaInicialSelecionado,
+	iconePaginaInicial,
 	iconePerfil,
 } from '../../../assets/Imagens/light_color';
 import { Button, Icone } from '../../../components/DefaultLayout';
+import { UpsertModal } from '../../Modal/UpsertModal';
 import { StyledLink } from '../StyledLink';
 import { ContainerLogosStyled } from './styled';
 
 const icons = [
 	{
-		image: iconePaginaInicialSelecionado,
+		image: iconePaginaInicial,
 		label: 'Pagina inicial',
 	},
 	{
@@ -24,30 +26,46 @@ const icons = [
 ];
 
 export const ContainerLogos = () => {
+	const [openModal, setOpenModal] = useState<boolean>(false);
+
+	function handleModal() {
+		setOpenModal(!openModal);
+	}
 	return (
 		<ContainerLogosStyled>
 			<img
 				src={iconeLogoGrowtweet}
 				alt='Logo Growdtweet'
 			/>
-			<div>
-				{icons.map((icon) => (
-					<Icone key={icon.image}>
-						<img
-							src={icon.image}
-							alt={icon.label}
-						/>
-						<StyledLink
-							to=''
-							$fontSize
-							$color
-							$hover>
-							{icon.label}
-						</StyledLink>
-					</Icone>
-				))}
-			</div>
-			<Button>Tweetar</Button>
+
+			{icons.map((icon) => (
+				<Icone key={icon.image}>
+					<img
+						src={icon.image}
+						alt={icon.label}
+					/>
+					<StyledLink
+						to=''
+						$fontSize
+						$color
+						$hover>
+						{icon.label}
+					</StyledLink>
+				</Icone>
+			))}
+
+			<Button
+				$height
+				$marginTop
+				$maxWidth
+				$fontSize
+				onClick={handleModal}>
+				Tweetar
+			</Button>
+			<UpsertModal
+				isOpen={openModal}
+				onClose={handleModal}
+			/>
 		</ContainerLogosStyled>
 	);
 };
