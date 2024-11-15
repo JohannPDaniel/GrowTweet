@@ -1,7 +1,9 @@
+import { Link } from "react-router-dom";
 import styled from 'styled-components';
 
 export const Icone = styled.div`
 	width: 100%;
+	height: 18.4px;
 	max-width: 150px;
 	display: flex;
 	align-items: center;
@@ -15,7 +17,9 @@ export const Icone = styled.div`
 		margin-left: 10px;
 	}
 
-	a {
-		color: #333333;
-	}
+`;
+
+export const LinkNav = styled(Link)`
+	font-size: 16px;
+	color: #333;
 `;

@@ -1,8 +1,8 @@
-// instale o Styled-Components com o comando: npm install styled-components
-
 import styled from 'styled-components';
 
-export const ContainerLogos = styled.div`
+export const ContainerLogosStyled = styled.div`
+	width: 100%;
+	max-width: 160px;
 	display: flex;
 	flex-direction: column;
 

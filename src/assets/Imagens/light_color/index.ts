@@ -14,3 +14,4 @@ export { default as iconeRetweet } from './icone_retweet.svg';
 export { default as iconeSeta } from './icone_seta.svg';
 export { default as iconeVer } from './icone_ver.svg';
 export { default as iconeLogoGrowtweet } from './logo_growtweet.svg';
+export { default as iconeLogoGrowdev } from './growdev.png';

@@ -1,5 +1,3 @@
-// instale o Styled-Components com o comando: npm install styled-components
-
 import styled from "styled-components";
 
 export const Button = styled.button`
@@ -13,5 +11,10 @@ export const Button = styled.button`
     background-color: #1D9BF0;
     color: white;
     font-size: 13.33px;
-    font-weight: 500
+    font-weight: 500;
+    cursor: pointer;
+
+    &:hover {
+        opacity: 85%;
+    }
 `;

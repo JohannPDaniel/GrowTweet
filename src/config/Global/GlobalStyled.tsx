@@ -10,11 +10,11 @@ export const GlobalStyle = createGlobalStyle`
     }
 
     html {
-        font-family: "Karla", sans-serif;
+        font-family: 'Karla', 'Roboto', sans-serif;
     }
 
     button {
-        font-family: "Karla", sans-serif;
+        font-family: 'Karla', 'Roboto', sans-serif;
     }
 
     a {
