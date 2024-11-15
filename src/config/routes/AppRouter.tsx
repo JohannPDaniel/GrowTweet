@@ -1,8 +1,7 @@
-// instale o React-Router-Dom com o comando: npm install react-router-dom
-
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import { Login } from "../../pages/Login";
 import { Explorer } from "../../pages/Explorer";
+import { HomePage } from "../../pages/HomePage";
 
 const router = createBrowserRouter([
 	{
@@ -10,8 +9,12 @@ const router = createBrowserRouter([
 		element: <Login />,
 	},
 	{
-		path: '/',
+		path: '/explorer',
 		element: <Explorer />,
+	},
+	{
+		path: '/',
+		element: <HomePage />,
 	},
 	{
 		path: '*',
