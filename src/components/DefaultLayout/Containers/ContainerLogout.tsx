@@ -1,7 +1,7 @@
 import { iconeLogoGrowdev } from '../../../assets/Imagens/light_color';
 import {
 	Logout,
-	PhotoProfile,
+	PhotoProfileStyled,
 	Profile,
 } from '../../../components/DefaultLayout';
 import { ContainerLogoutStyled } from './styled';
@@ -10,7 +10,7 @@ export const ContainerLogout = () => {
 	return (
 		<ContainerLogoutStyled>
 			<Profile>
-				<PhotoProfile
+				<PhotoProfileStyled
 					src={iconeLogoGrowdev}
 					alt='Logo Growdev'
 				/>

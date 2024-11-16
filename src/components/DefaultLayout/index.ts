@@ -4,5 +4,5 @@ export * from './ImgGrowTweeter';
 export * from './Logout';
 export * from './NavStyled';
 export * from './News';
-export * from './PhotoProfile';
+export * from './PhotoProfileStyled';
 export * from './Profile';
