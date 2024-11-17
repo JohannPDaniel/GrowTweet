@@ -1,7 +1,7 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
-export const ContainerContentStyled  = styled.div`
-    width: 45%;
-    height: auto;
-    min-height: 100vh
+export const ContainerContentStyled = styled.div`
+	width: 45%;
+	max-height: 100vh; 
+	overflow-y: auto; 
 `;

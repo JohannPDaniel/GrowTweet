@@ -1,4 +1,4 @@
-import { News } from '../components/DefaultLayout';
+import { NewsStyled } from "../components/DefaultLayout/Styled";
 import { ExplorerStyled } from '../components/Explorer/ExplorerStyled';
 import { PageTitle } from '../components/Explorer/PageTitle';
 import { DefaultLayout } from '../config/Layout/DefaultLayout';
@@ -40,10 +40,10 @@ export const Explorer = () => {
 			<PageTitle>Explorar</PageTitle>
 			<ExplorerStyled>
 				{breakingNews.map((breakingNew) => (
-					<News $marginTop key={breakingNew.title}>
+					<NewsStyled $marginTop key={breakingNew.title}>
 						<small>{breakingNew.title}</small>
 						<p>{breakingNew.description}</p>
-					</News>
+					</NewsStyled>
 				))}
 			</ExplorerStyled>
 		</DefaultLayout>

@@ -2,7 +2,7 @@
 
 import styled from 'styled-components';
 
-export const ImageGrowTweeter = styled.img`
+export const ImageGrowTweeterStyled = styled.img`
 	width: 100%;
 	height: auto;
 	max-width: 120px;

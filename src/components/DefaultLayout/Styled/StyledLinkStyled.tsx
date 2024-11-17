@@ -7,7 +7,7 @@ interface StyledLinkProps {
 	$hover?: boolean;
 }
 
-export const StyledLink = styled(Link)<StyledLinkProps>`
+export const StyledLinkStyled = styled(Link)<StyledLinkProps>`
 	font-size: ${({ $fontSize }) => ($fontSize ? '16px' : '10px')};
 	color: ${({ $color }) => ($color ? '#333' : '#007bff')};
 	margin-top: auto;

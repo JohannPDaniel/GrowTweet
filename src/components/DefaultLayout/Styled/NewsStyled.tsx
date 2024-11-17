@@ -4,7 +4,7 @@ interface NewsProps {
 	$marginTop?: boolean;
 }
 
-export const News = styled.div<NewsProps>`
+export const NewsStyled = styled.div<NewsProps>`
 	width: 100%;
 	height: auto;
 	display: flex;

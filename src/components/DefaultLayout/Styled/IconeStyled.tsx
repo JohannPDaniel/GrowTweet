@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const Icone = styled.div`
+export const IconeStyled = styled.div`
 	width: 100%;
 	height: 18.4px;
 	max-width: 150px;

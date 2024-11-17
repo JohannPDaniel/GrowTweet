@@ -1,5 +1,5 @@
-import { News } from '../../../components/DefaultLayout';
-import { StyledLink } from '../StyledLink';
+import { NewsStyled } from "../Styled";
+import { StyledLinkStyled } from "../Styled/StyledLinkStyled";
 import { ContainerNewsStyled } from './styled';
 
 const breakingNews = [
@@ -28,13 +28,13 @@ export const ContainerNews = () => {
 				<h5>O que está acontecendo?</h5>
 
 				{breakingNews.map((breakingNew) => (
-					<News key={breakingNew.title}>
+					<NewsStyled key={breakingNew.title}>
 						<small>{breakingNew.title}</small>
 						<p>{breakingNew.description}</p>
-					</News>
+					</NewsStyled>
 				))}
 
-				<StyledLink to=''>mostrar mais</StyledLink>
+				<StyledLinkStyled to=''>mostrar mais</StyledLinkStyled>
 			</div>
 		</ContainerNewsStyled>
 	);

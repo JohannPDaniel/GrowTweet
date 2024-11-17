@@ -7,7 +7,7 @@ interface ButtonProps {
 	$fontSize?: boolean;
 }
 
-export const Button = styled.button<ButtonProps>`
+export const ButtonStyled = styled.button<ButtonProps>`
 	width: 100%;
 	height: ${({ $height }) => ($height ? '32px' : '25px')};
 	max-width: ${({ $maxWidth }) => ($maxWidth ? '160px' : '70px')};

@@ -5,10 +5,10 @@ import {
 	iconePaginaInicial,
 	iconePerfil,
 } from '../../../assets/Imagens/light_color';
-import { Button, Icone } from '../../../components/DefaultLayout';
 import { UpsertModal } from '../../Modal/UpsertModal';
-import { StyledLink } from '../StyledLink';
 import { ContainerLogosStyled } from './styled';
+import { ButtonStyled, IconeStyled } from "../Styled";
+import { StyledLinkStyled } from "../Styled/StyledLinkStyled";
 
 const icons = [
 	{
@@ -39,29 +39,29 @@ export const ContainerLogos = () => {
 			/>
 
 			{icons.map((icon) => (
-				<Icone key={icon.image}>
+				<IconeStyled key={icon.image}>
 					<img
 						src={icon.image}
 						alt={icon.label}
 					/>
-					<StyledLink
+					<StyledLinkStyled
 						to=''
 						$fontSize
 						$color
 						$hover>
 						{icon.label}
-					</StyledLink>
-				</Icone>
+					</StyledLinkStyled>
+				</IconeStyled>
 			))}
 
-			<Button
+			<ButtonStyled
 				$height
 				$marginTop
 				$maxWidth
 				$fontSize
 				onClick={handleModal}>
 				Tweetar
-			</Button>
+			</ButtonStyled>
 			<UpsertModal
 				isOpen={openModal}
 				onClose={handleModal}

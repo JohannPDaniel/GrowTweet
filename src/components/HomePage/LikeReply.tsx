@@ -1,23 +1,29 @@
 import { iconeResponder, iconeCurtir } from "../../assets/Imagens/light_color";
 import { LikeReplyStyled } from "./Styled/LikeReplyStyled";
 
+const messageLikes = [
+	{
+        icone: iconeResponder,
+        alt: 'ícone de resposta'
+    },
+    {
+        icone: iconeCurtir,
+        alt: "ícone de resposta"
+    }
+];
+
 export const LikeReply = () => {
 	return (
 		<LikeReplyStyled>
-			<div>
-				<img
-					src={iconeResponder}
-					alt='ícone de resposta'
-				/>
-				<span>0</span>
-			</div>
-			<div>
-				<img
-					src={iconeCurtir}
-					alt='ícone de resposta'
-				/>
-				<span>0</span>
-			</div>
+			{messageLikes.map((messageLike) => (
+				<div key={messageLike.alt}>
+					<img
+						src={messageLike.icone}
+						alt={messageLike.alt}
+					/>
+					<span>0</span>
+				</div>
+			))}
 		</LikeReplyStyled>
 	);
 };

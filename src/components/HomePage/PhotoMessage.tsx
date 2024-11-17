@@ -1,5 +1,5 @@
 import { iconeLogoGrowdev } from "../../assets/Imagens/light_color";
-import { PhotoProfileStyled } from "../DefaultLayout";
+import { PhotoProfileStyled } from "../DefaultLayout/Styled";
 import { PhotoMessageStyled, MessageStyled } from "./Styled/PhotoMessageStyled";
 
 export const PhotoMessage = () => {

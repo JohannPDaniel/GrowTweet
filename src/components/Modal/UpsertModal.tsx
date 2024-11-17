@@ -1,5 +1,5 @@
 import { iconeX } from '../../assets/Imagens/light_color';
-import { Button } from '../DefaultLayout';
+import { ButtonStyled } from "../DefaultLayout/Styled";
 import { Box } from './Box';
 import { Modal } from './Modal';
 
@@ -24,7 +24,7 @@ export const UpsertModal = ({ isOpen, onClose }: UpsertModalProps) => {
 				name='message'
 				placeholder='O que está acontecendo ?'></Box>
 			<section>
-				<Button $height={false}>Tweetar</Button>
+				<ButtonStyled $height={false}>Tweetar</ButtonStyled>
 			</section>
 		</Modal>
 	);
