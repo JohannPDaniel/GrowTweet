@@ -35,4 +35,20 @@ export const ModalContent = styled.div`
 		flex-direction: column;
 		align-items: flex-end;
 	}
+	
+	@media screen and (min-width: 320px) and (max-width: 374px) {
+		min-width: 250px;
+	}
+
+	@media screen and (min-width: 375px) and (max-width: 424px) {
+		min-width: 300px;
+	}
+
+	@media screen and (min-width: 425px) and (max-width: 480px) {
+		min-width: 350px;
+	}
+
+	@media screen and (min-width: 480px) {
+		min-width: 400px;
+	}
 `;

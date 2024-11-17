@@ -1,6 +1,10 @@
-import { NewsStyled } from "../Styled";
-import { StyledLinkStyled } from "../Styled/StyledLinkStyled";
+import { NewsStyled } from '../Styled';
+import { StyledLinkStyled } from '../Styled/StyledLinkStyled';
 import { ContainerNewsStyled } from './styled';
+
+interface ContainerNewsProps {
+	$isActive: boolean;
+}
 
 const breakingNews = [
 	{
@@ -21,9 +25,9 @@ const breakingNews = [
 	},
 ];
 
-export const ContainerNews = () => {
+export const ContainerNews = ({ $isActive }: ContainerNewsProps) => {
 	return (
-		<ContainerNewsStyled>
+		<ContainerNewsStyled $isActive={$isActive}>
 			<div>
 				<h5>O que está acontecendo?</h5>
 

@@ -12,4 +12,5 @@ export const ContainerLogosStyled = styled.div`
 		max-width: 80px;
 		margin: 0 0 10px 10px;
 	}
+
 `;
