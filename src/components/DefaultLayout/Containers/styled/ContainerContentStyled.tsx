@@ -1,7 +1,8 @@
 import styled from 'styled-components';
 
 export const ContainerContentStyled = styled.div`
-	width: 45%;
+	width: auto;
+	height: auto;
 	max-height: 100vh;
 	overflow-y: auto;
 
@@ -20,11 +21,7 @@ export const ContainerContentStyled = styled.div`
 		width: 50%;
 	}
 
-	@media screen and (min-width: 1440px) and (max-width: 1900px) {
-		width: 50%;
-	}
-
-	@media screen and (min-width: 1901px)  {
+	@media screen and (min-width: 1440px)  {
 		width: 50%;
 	}
 `;

@@ -4,9 +4,8 @@ interface ContainerNewsProps {
 	$isActive: boolean;
 }
 
-
 export const ContainerNewsStyled = styled.div<ContainerNewsProps>`
-	width: 45%;
+	width: auto;
 	height: auto;
 	min-height: 100vh;
 	display: flex;
@@ -26,8 +25,7 @@ export const ContainerNewsStyled = styled.div<ContainerNewsProps>`
 		flex-direction: column;
 	}
 
-
-	@media screen and  (max-width: 767px) {
+	@media screen and (max-width: 767px) {
 		position: fixed;
 		top: 0;
 		left: 0;
@@ -47,13 +45,9 @@ export const ContainerNewsStyled = styled.div<ContainerNewsProps>`
 
 	@media screen and (min-width: 1024px) and (max-width: 1439px) {
 		width: 40%;
-	}
+	} 
 
-	@media screen and (min-width: 1440px) and (max-width: 1900px) {
+	@media screen and (min-width: 1440px)  {
 		width: 40%;
-	}
-
-	@media screen and (min-width: 1901px) {
-		width: 50%;
 	}
 `;

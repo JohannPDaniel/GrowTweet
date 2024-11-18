@@ -5,7 +5,7 @@ interface ContainerNavProps {
 }
 
 export const ContainerNavStyled = styled.div<ContainerNavProps>`
-	width: 33%;
+	width: auto;
 	height: auto;
 	min-height: 100vh;
 	border-right: 1px solid #e0e0e0;
@@ -62,13 +62,9 @@ export const ContainerNavStyled = styled.div<ContainerNavProps>`
 
 	@media screen and (min-width: 1024px) and (max-width: 1439px) {
 		width: 30%;
-	}
+	} 
 
-	@media screen and (min-width: 1440px) and (max-width: 1900px) {
+	@media screen and (min-width: 1440px) {
 		width: 30%;
-	}
-
-	@media screen and (min-width: 1901px) {
-		width: 50%;
 	}
 `;
