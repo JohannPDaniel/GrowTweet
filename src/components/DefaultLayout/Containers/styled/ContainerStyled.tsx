@@ -5,5 +5,4 @@ export const ContainerStyled = styled.div`
 	height: auto;
 	min-height: 100vh;
 	display: flex;
-	justify-content: flex-end;
 `;

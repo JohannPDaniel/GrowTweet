@@ -1,7 +1,7 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 interface UpdateDeleteProps {
-	$display?: boolean
+	$display?: boolean;
 }
 
 export const UpdateDeleteStyled = styled.div<UpdateDeleteProps>`
@@ -56,7 +56,39 @@ export const UpdateDeleteStyled = styled.div<UpdateDeleteProps>`
 		background-color: #ddd;
 	}
 
+	@media screen and (min-width: 320px) and (max-width: 374px) {
+		.dropdown-content {
+			right: 22px;
+		}
+	}
+
+	@media screen and (min-width: 375px) and (max-width: 424px) {
+		.dropdown-content {
+			right: 30px;
+		}
+	}
+
+	@media screen and (min-width: 425px) and (max-width: 767px) {
+		.dropdown-content {
+			right: 30px;
+		}
+	}
+
+	@media screen and (min-width: 768px) and (max-width: 1023px) {
+		.dropdown-content {
+			right: 265px;
+		}
+	}
+
 	@media screen and (min-width: 1024px) and (max-width: 1439px) {
-		right: 40px;
+		.dropdown-content {
+			right: 320px;
+		}
+	}
+
+	@media screen and (min-width: 1440px)  {
+		.dropdown-content {
+			right: 550px;
+		}
 	}
 `;

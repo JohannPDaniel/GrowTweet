@@ -15,7 +15,7 @@ const icons = [
 	{
 		image: iconePaginaInicial,
 		label: 'Pagina inicial',
-		to: '/homepage',
+		to: '/',
 	},
 	{
 		image: iconeExplorar,

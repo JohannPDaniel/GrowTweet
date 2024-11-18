@@ -50,6 +50,10 @@ export const LoginForm = styled.div`
 		text-align: center;
 		cursor: pointer;
 
+		&:hover {
+			opacity: 85%;
+		}
+
 		&:disabled {
 			background-color: #ccc;
 			cursor: progress;

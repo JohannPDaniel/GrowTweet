@@ -61,7 +61,7 @@ export const ContainerNavStyled = styled.div<ContainerNavProps>`
 	}
 
 	@media screen and (min-width: 1024px) and (max-width: 1439px) {
-		width: 30%;
+		width: 20%;
 	} 
 
 	@media screen and (min-width: 1440px) {

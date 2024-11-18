@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { InfoSection } from "../components/Login/InfoSection";
 import { LoginForm } from "../components/Login/LoginForm";
 import { MainLogin } from "../components/Login/MainLogin";
@@ -35,6 +36,8 @@ export const Login = () => {
 							name='password'
 						/>
 					</div>
+
+					<p>Ainda não tem conta? <Link to="">Criar conta</Link></p>
 
 					<button>Entrar</button>
 				</LoginForm>

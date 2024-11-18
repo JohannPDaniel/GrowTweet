@@ -18,10 +18,10 @@ export const ContainerContentStyled = styled.div`
 	}
 
 	@media screen and (min-width: 1024px) and (max-width: 1439px) {
-		width: 50%;
+		width: 55%;
 	}
 
 	@media screen and (min-width: 1440px)  {
-		width: 50%;
+		width: 40%;
 	}
 `;

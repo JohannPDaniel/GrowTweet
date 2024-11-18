@@ -44,7 +44,7 @@ export const ContainerNewsStyled = styled.div<ContainerNewsProps>`
 	}
 
 	@media screen and (min-width: 1024px) and (max-width: 1439px) {
-		width: 40%;
+		width: 30%;
 	} 
 
 	@media screen and (min-width: 1440px)  {
