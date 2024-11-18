@@ -1,5 +1,5 @@
 import { PageTitle } from '../components/Explorer/PageTitle';
-import { Tweet } from "../components/HomePage/Tweet";
+import { Tweet } from '../components/HomePage/Tweet';
 import { DefaultLayout } from '../config/Layout/DefaultLayout';
 
 export const HomePage = () => {

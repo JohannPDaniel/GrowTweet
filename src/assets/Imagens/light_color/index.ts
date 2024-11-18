@@ -15,3 +15,6 @@ export { default as iconeSeta } from './icone_seta.svg';
 export { default as iconeVer } from './icone_ver.svg';
 export { default as iconeLogoGrowtweet } from './logo_growtweet.svg';
 export { default as iconeLogoGrowdev } from './growdev.png';
+export { default as iconePontinhos } from './pontinhos.png';
+export { default as iconeAtualizar } from './Atualizar.png';
+export { default as iconeApagar } from './Apagar.png';
