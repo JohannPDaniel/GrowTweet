@@ -2,12 +2,17 @@
 
 import styled from "styled-components";
 
-export const MainLogin = styled.div`
-    width: 100%;
-    height: auto;
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: #f2f2f2
+interface MainLoginProps {
+    $flexDirection?: boolean
+}
+
+export const MainLogin = styled.div<MainLoginProps>`
+	width: 100%;
+	height: auto;
+	min-height: 100vh;
+	display: flex;
+    flex-direction: ${({$flexDirection}) => ($flexDirection ? "column" : "row")};
+	align-items: center;
+	justify-content: center;
+	background-color: #f2f2f2;
 `;

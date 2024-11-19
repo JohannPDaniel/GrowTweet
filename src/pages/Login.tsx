@@ -7,7 +7,7 @@ import { SectionWrapper } from "../components/Login/SectionWrapper";
 export const Login = () => {
 	return (
 		<MainLogin>
-			<SectionWrapper>
+			<SectionWrapper $minHeight>
 				<InfoSection>
 					<h1>Growtwitter</h1>
 					<small>Trabalho final do bloco intermediário</small>
@@ -37,7 +37,7 @@ export const Login = () => {
 						/>
 					</div>
 
-					<p>Ainda não tem conta? <Link to="">Criar conta</Link></p>
+					<p>Ainda não tem conta? <Link to="/signup">Criar conta</Link></p>
 
 					<button>Entrar</button>
 				</LoginForm>

@@ -60,9 +60,30 @@ export const LoginForm = styled.div`
 		}
 	}
 
+	p {
+		a {
+			color: #0400ff;
+			&:hover {
+				color: #00bfff;
+			}
+		}
+	}
+
 	@media screen and (min-width: 320px) and (max-width: 374px) {
 		width: 100%;
 		border-radius: 0 0 7px 7px;
+
+		p {
+			font-size: 13px;
+			a {
+				font-size: 13px;
+
+				color: #0400ff;
+				&:hover {
+					color: #00bfff;
+				}
+			}
+		}
 
 		div {
 			input {
@@ -77,9 +98,20 @@ export const LoginForm = styled.div`
 
 	@media screen and (min-width: 375px) and (max-width: 424px) {
 		width: 100%;
-		height: 255px;
-
+		height: 280px;
 		border-radius: 0 0 7px 7px;
+
+		p {
+			font-size: 15px;
+			a {
+				font-size: 15px;
+
+				color: #0400ff;
+				&:hover {
+					color: #00bfff;
+				}
+			}
+		}
 
 		h2 {
 			font-size: 23px;
@@ -98,8 +130,20 @@ export const LoginForm = styled.div`
 
 	@media screen and (min-width: 425px) and (max-width: 767px) {
 		width: 100%;
-		height: 265px;
+		height: 285px;
 		border-radius: 0 0 7px 7px;
+
+		p {
+			font-size: 16px;
+			a {
+				font-size: 16px;
+
+				color: #0400ff;
+				&:hover {
+					color: #00bfff;
+				}
+			}
+		}
 
 		h2 {
 			font-size: 25px;
@@ -119,6 +163,18 @@ export const LoginForm = styled.div`
 	@media screen and (min-width: 768px) and (max-width: 1023px) {
 		width: 50%;
 		border-radius: 0 7px 7px 0;
+
+		p {
+			font-size: 14px;
+			a {
+				font-size: 14px;
+
+				color: #0400ff;
+				&:hover {
+					color: #00bfff;
+				}
+			}
+		}
 
 		h2 {
 			font-size: 22px;
@@ -145,6 +201,18 @@ export const LoginForm = styled.div`
 		div {
 			input {
 				min-width: 280px;
+			}
+		}
+
+		p {
+			font-size: 16px;
+			a {
+				font-size: 16px;
+
+				color: #0400ff;
+				&:hover {
+					color: #00bfff;
+				}
 			}
 		}
 

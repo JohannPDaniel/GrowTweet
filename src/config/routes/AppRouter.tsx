@@ -3,14 +3,19 @@ import { Login } from "../../pages/Login";
 import { Explorer } from "../../pages/Explorer";
 import { HomePage } from "../../pages/HomePage";
 import { ProfilePage } from "../../pages/ProfilePage";
+import { SignUp } from "../../pages/SignUp";
 
 const router = createBrowserRouter([
 	{
-		path: '/Login',
+		path: '/',
 		element: <Login />,
 	},
 	{
-		path: '/',
+		path: '/signup',
+		element: <SignUp />,
+	},
+	{
+		path: '/homepage',
 		element: <HomePage />,
 	},
 	{
