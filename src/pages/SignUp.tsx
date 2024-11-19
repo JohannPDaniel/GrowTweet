@@ -42,7 +42,7 @@ const inputLabels = [
 
 export const SignUp = () => {
 	return (
-		<MainLogin>
+		<MainLogin $flexDirection>
 			<SectionWrapper
 				$minWidth
 				$maxWidth
@@ -50,7 +50,7 @@ export const SignUp = () => {
 				$flexDirection>
 				<ContentSignUp>
 					<h1>Cadastro de usuário</h1>
-					
+
 					{inputLabels.map((inputLabel, index) => (
 						<div key={index}>
 							<label htmlFor={inputLabel.htmlFor}>{inputLabel.label}</label>
@@ -61,6 +61,11 @@ export const SignUp = () => {
 							/>
 						</div>
 					))}
+
+					<div className="buttons">
+						<button>cancelar</button>
+						<button>Cadastrar</button>
+					</div>
 				</ContentSignUp>
 			</SectionWrapper>
 		</MainLogin>
