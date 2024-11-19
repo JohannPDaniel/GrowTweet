@@ -2,10 +2,6 @@ import { NewsStyled } from '../Styled';
 import { StyledLinkStyled } from '../Styled/StyledLinkStyled';
 import { ContainerNewsStyled } from './styled';
 
-interface ContainerNewsProps {
-	$isActive: boolean;
-}
-
 const breakingNews = [
 	{
 		title: 'Esportes - Há 45 min',
@@ -25,9 +21,9 @@ const breakingNews = [
 	},
 ];
 
-export const ContainerNews = ({ $isActive }: ContainerNewsProps) => {
+export const ContainerNews = () => {
 	return (
-		<ContainerNewsStyled $isActive={$isActive}>
+		<ContainerNewsStyled >
 			<div>
 				<h5>O que está acontecendo?</h5>
 

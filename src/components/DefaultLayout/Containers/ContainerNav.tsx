@@ -2,16 +2,12 @@ import { ContainerLogos } from './ContainerLogos';
 import { ContainerLogout } from './ContainerLogout';
 import { ContainerNavStyled } from './styled';
 
-interface ContainerNavProps {
-	$isActive: boolean;
-}
 
-export const ContainerNav = ({ $isActive }: ContainerNavProps) => {
+export const ContainerNav = () => {
 	return (
-		<ContainerNavStyled $isActive={$isActive}>
+		<ContainerNavStyled >
 			<ContainerLogos />
-			<ContainerLogout />
-			
+			<ContainerLogout />		
 		</ContainerNavStyled>
 	);
 };

@@ -7,7 +7,7 @@ import { SignUp } from "../../pages/SignUp";
 
 const router = createBrowserRouter([
 	{
-		path: '/',
+		path: '/login',
 		element: <Login />,
 	},
 	{
@@ -15,7 +15,7 @@ const router = createBrowserRouter([
 		element: <SignUp />,
 	},
 	{
-		path: '/homepage',
+		path: '/',
 		element: <HomePage />,
 	},
 	{

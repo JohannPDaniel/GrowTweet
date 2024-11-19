@@ -60,7 +60,7 @@ export const ContentSignUp = styled.div`
 			background-color: #ed1d1d;
 			color: white;
 			border: none;
-			border-radius: 5px;
+			border-radius: 8px;
 			cursor: pointer;
 
 			&:hover {
@@ -74,7 +74,7 @@ export const ContentSignUp = styled.div`
 			background-color: #14a714;
 			color: white;
 			border: none;
-			border-radius: 5px;
+			border-radius: 8px;
 			cursor: pointer;
 
 			&:hover {

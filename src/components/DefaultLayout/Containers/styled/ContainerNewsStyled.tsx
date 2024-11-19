@@ -1,10 +1,7 @@
 import styled from 'styled-components';
 
-interface ContainerNewsProps {
-	$isActive: boolean;
-}
 
-export const ContainerNewsStyled = styled.div<ContainerNewsProps>`
+export const ContainerNewsStyled = styled.div`
 	width: auto;
 	height: auto;
 	min-height: 100vh;
@@ -26,17 +23,7 @@ export const ContainerNewsStyled = styled.div<ContainerNewsProps>`
 	}
 
 	@media screen and (max-width: 767px) {
-		position: fixed;
-		top: 0;
-		left: 0;
-		width: 60%;
-		height: 100vh;
-		background-color: white;
-		z-index: 1000;
-		box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
-		transform: ${({ $isActive }) =>
-			$isActive ? 'translateX(0)' : 'translateX(-100%)'};
-		transition: transform 0.3s ease-in-out;
+		display: none;
 	}
 
 	@media screen and (min-width: 768px) and (max-width: 1023px) {

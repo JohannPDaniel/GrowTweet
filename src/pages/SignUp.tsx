@@ -51,21 +51,23 @@ export const SignUp = () => {
 				<ContentSignUp>
 					<h1>Cadastro de usuário</h1>
 
-					{inputLabels.map((inputLabel, index) => (
-						<div key={index}>
-							<label htmlFor={inputLabel.htmlFor}>{inputLabel.label}</label>
-							<input
-								type={inputLabel.type}
-								name={inputLabel.name}
-								id={inputLabel.id}
-							/>
+					<form>
+						{inputLabels.map((inputLabel, index) => (
+							<div key={index}>
+								<label htmlFor={inputLabel.htmlFor}>{inputLabel.label}</label>
+								<input
+									type={inputLabel.type}
+									name={inputLabel.name}
+									id={inputLabel.id}
+									required
+								/>
+							</div>
+						))}
+						<div className='buttons'>
+							<button type='reset'>cancelar</button>
+							<button type='submit'>Cadastrar</button>
 						</div>
-					))}
-
-					<div className="buttons">
-						<button>cancelar</button>
-						<button>Cadastrar</button>
-					</div>
+					</form>
 				</ContentSignUp>
 			</SectionWrapper>
 		</MainLogin>
