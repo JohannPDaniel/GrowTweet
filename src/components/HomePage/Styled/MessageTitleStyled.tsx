@@ -1,14 +1,15 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const MessageTitleStyled = styled.div`
+	width: 100%;
 	display: flex;
 	align-items: center;
-	justify-content: space-between; 
+	justify-content: space-between;
 
 	> div {
 		display: flex;
 		align-items: center;
-        gap: 8px
+		gap: 8px;
 	}
 
 	> div p {
@@ -21,11 +22,11 @@ export const MessageTitleStyled = styled.div`
 	> div p span {
 		font-size: 12px;
 		color: #333;
-        display: flex;
-        align-items: center
+		display: flex;
+		align-items: center;
 	}
 
-    @media screen and (min-width: 320px) and (max-width: 374px) {
+	/* @media screen and (min-width: 320px) and (max-width: 374px) {
         gap: 100px
     }
 
@@ -47,5 +48,5 @@ export const MessageTitleStyled = styled.div`
 
     @media screen and (min-width: 1440px) {
         gap: 300px
-    }
+    } */
 `;

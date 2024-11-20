@@ -1,9 +1,12 @@
-import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import { Link, useLocation } from 'react-router-dom';
 import {
 	iconeExplorar,
+	iconeExplorarSelecionado,
 	iconePaginaInicial,
+	iconePaginaInicialSelecionado,
 	iconePerfil,
+	iconePerfilSelecionado,
 	iconeResponder,
 } from '../../../assets/Imagens/light_color';
 import { EqualWidthNavigationStyled } from './styled/EqualWidthNavigationStyled';
@@ -14,44 +17,52 @@ const navigations = [
 		icone: iconePaginaInicial,
 		alt: 'Página Inicial',
 		to: '/',
+		activeImage: iconePaginaInicialSelecionado,
 	},
 	{
 		icone: iconeResponder,
 		alt: 'Tweetar',
-		to: '', 
+		to: '',
+		activeImage: iconeResponder,
 	},
 	{
 		icone: iconeExplorar,
 		alt: 'Explorar',
 		to: '/explorer',
+		activeImage: iconeExplorarSelecionado,
 	},
 	{
 		icone: iconePerfil,
 		alt: 'Perfil',
 		to: '/profilepage',
+		activeImage: iconePerfilSelecionado,
 	},
 ];
 
 export const EqualWidthNavigation = () => {
-	const [isModalOpen, setModalOpen] = useState(false);
+	const { pathname } = useLocation();
 
-	const [activeIndex, setActiveIndex] = useState(() => {
-		const defaultActive = navigations.findIndex(
-			(nav) => nav.to === window.location.pathname
-		);
-		return defaultActive !== -1 ? defaultActive : 0;
-	});
+	const [isModalOpen, setModalOpen] = useState(false);
+	const [activeIndex, setActiveIndex] = useState(() =>
+		navigations.findIndex((nav) => nav.to === pathname)
+	);
 
 	const handleButtonClick = (
 		index: number,
 		nav: (typeof navigations)[number]
 	) => {
 		setActiveIndex(index);
-
 		if (nav.alt === 'Tweetar') {
 			setModalOpen(true);
 		}
 	};
+
+	useEffect(() => {
+		const currentIndex = navigations.findIndex((nav) => nav.to === pathname);
+		if (currentIndex !== -1) {
+			setActiveIndex(currentIndex);
+		}
+	}, [pathname]);
 
 	return (
 		<>
@@ -68,14 +79,13 @@ export const EqualWidthNavigation = () => {
 						}}
 						className={activeIndex === index ? 'active' : ''}>
 						<img
-							src={nav.icone}
+							src={activeIndex === index ? nav.activeImage : nav.icone}
 							alt={nav.alt}
 						/>
 					</Link>
 				))}
 			</EqualWidthNavigationStyled>
 
-			{/* Modal */}
 			<UpsertModal
 				isOpen={isModalOpen}
 				onClose={() => setModalOpen(false)}

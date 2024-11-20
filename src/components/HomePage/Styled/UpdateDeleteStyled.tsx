@@ -5,11 +5,12 @@ interface UpdateDeleteProps {
 }
 
 export const UpdateDeleteStyled = styled.div<UpdateDeleteProps>`
+	width: auto;
+	height: auto;
 	display: flex;
 	align-items: center;
 	justify-content: flex-end;
-	width: auto;
-	height: auto;
+	position: relative;
 
 	img {
 		width: 100%;
@@ -21,12 +22,12 @@ export const UpdateDeleteStyled = styled.div<UpdateDeleteProps>`
 	}
 
 	.dropdown-content {
+		width: 160px;
 		display: ${({ $display }) => ($display ? 'block' : 'none')};
 		position: absolute;
-		top: 70px;
-		right: 530px;
+		top: 15px;
+		right: 10px;
 		background-color: #f1f1f1;
-		min-width: 160px;
 		box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
 		z-index: 1;
 		cursor: pointer;
@@ -36,59 +37,20 @@ export const UpdateDeleteStyled = styled.div<UpdateDeleteProps>`
 		}
 
 		.dropdown-editar {
+			width: 100%;
 			display: flex;
 			gap: 5px;
+			color: black;
+			padding: 12px 16px;
 
 			p {
 				color: black;
 			}
+
+			&:hover {
+				background-color: #ddd;
+			}
 		}
 	}
 
-	.dropdown-content div {
-		color: black;
-		padding: 12px 16px;
-		text-decoration: none;
-		display: block;
-	}
-
-	.dropdown-content div:hover {
-		background-color: #ddd;
-	}
-
-	@media screen and (min-width: 320px) and (max-width: 374px) {
-		.dropdown-content {
-			right: 22px;
-		}
-	}
-
-	@media screen and (min-width: 375px) and (max-width: 424px) {
-		.dropdown-content {
-			right: 30px;
-		}
-	}
-
-	@media screen and (min-width: 425px) and (max-width: 767px) {
-		.dropdown-content {
-			right: 30px;
-		}
-	}
-
-	@media screen and (min-width: 768px) and (max-width: 1023px) {
-		.dropdown-content {
-			right: 265px;
-		}
-	}
-
-	@media screen and (min-width: 1024px) and (max-width: 1439px) {
-		.dropdown-content {
-			right: 320px;
-		}
-	}
-
-	@media screen and (min-width: 1440px)  {
-		.dropdown-content {
-			right: 550px;
-		}
-	}
 `;
