@@ -43,3 +43,20 @@ export const inputLabels: InputLabel[] = [
 		id: 'confirmPassword',
 	},
 ];
+
+export const inputsLogin: InputLabel[] = [
+	{
+		htmlFor: 'email',
+		label: 'Email:',
+		type: 'email',
+		name: 'email',
+		id: 'email',
+	},
+	{
+		htmlFor: 'password',
+		label: 'password:',
+		type: 'password',
+		name: 'password',
+		id: 'password',
+	},
+];

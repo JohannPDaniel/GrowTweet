@@ -1,7 +1,7 @@
-import { NewsStyled } from "../components/DefaultLayout/Styled";
+import { NewsStyled } from '../components/DefaultLayout/Styled';
 import { ExplorerStyled } from '../components/Explorer/ExplorerStyled';
 import { PageTitle } from '../components/Explorer/PageTitle';
-import { DefaultLayout } from '../config/Layout/DefaultLayout';
+import { DefaultLayout } from "../config/layout/DefaultLayout";
 
 const breakingNews = [
 	{
@@ -40,7 +40,9 @@ export const Explorer = () => {
 			<PageTitle>Explorar</PageTitle>
 			<ExplorerStyled>
 				{breakingNews.map((breakingNew) => (
-					<NewsStyled $marginTop key={breakingNew.title}>
+					<NewsStyled
+						$marginTop
+						key={breakingNew.title}>
 						<small>{breakingNew.title}</small>
 						<p>{breakingNew.description}</p>
 					</NewsStyled>
