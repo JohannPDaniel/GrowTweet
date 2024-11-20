@@ -13,58 +13,67 @@ export const LoginForm = styled.div`
 	justify-content: flex-start;
 	gap: 10px;
 
-	div {
+	form {
+		width: 100%;
 		display: flex;
 		flex-direction: column;
+		align-items: center;
+		gap: 10px;
 
-		label {
-			font-size: 14px;
-			color: #8897be;
+		h2 {
+			font-size: 20px;
+			color: #333333;
+			font-weight: 700;
 		}
 
-		input {
+		> div {
+			display: flex;
+			flex-direction: column;
+
+			label {
+				font-size: 14px;
+				color: #8897be;
+			}
+
+			input {
+				width: 100%;
+				max-width: 200px;
+				padding: 8px;
+				margin-top: 4px;
+				border: 1px solid #ccc;
+				border-radius: 8px;
+			}
+		}
+
+		button {
 			width: 100%;
-			min-width: 200px;
+			max-width: 280px;
+			background-color: #1d9bf0;
+			color: white;
 			padding: 8px;
-			margin-top: 4px;
-			border: 1px solid #ccc;
+			border: none;
 			border-radius: 8px;
-		}
-	}
+			margin-top: 5px;
+			text-align: center;
+			cursor: pointer;
 
-	h2 {
-		font-size: 20px;
-		color: #333333;
-		font-weight: 700;
-		text-align: center;
-	}
-
-	button {
-		background-color: #1d9bf0;
-		color: white;
-		width: auto;
-		padding: 8px;
-		border: none;
-		border-radius: 8px;
-		margin-top: 5px;
-		text-align: center;
-		cursor: pointer;
-
-		&:hover {
-			opacity: 85%;
-		}
-
-		&:disabled {
-			background-color: #ccc;
-			cursor: progress;
-		}
-	}
-
-	p {
-		a {
-			color: #0400ff;
 			&:hover {
-				color: #00bfff;
+				opacity: 85%;
+			}
+
+			&:disabled {
+				background-color: #ccc;
+				cursor: progress;
+			}
+		}
+
+		p {
+			text-align: center;
+			a {
+				color: #0400ff;
+				&:hover {
+					color: #00bfff;
+				}
 			}
 		}
 	}
@@ -73,96 +82,21 @@ export const LoginForm = styled.div`
 		width: 100%;
 		border-radius: 0 0 7px 7px;
 
-		p {
-			font-size: 13px;
-			a {
-				font-size: 13px;
-
-				color: #0400ff;
-				&:hover {
-					color: #00bfff;
-				}
-			}
-		}
-
-		div {
-			input {
-				min-width: 200px;
-			}
-		}
-
-		button {
-			min-width: 200px;
-		}
-	}
-
-	@media screen and (min-width: 375px) and (max-width: 424px) {
-		width: 100%;
-		height: 280px;
-		border-radius: 0 0 7px 7px;
-
-		p {
-			font-size: 15px;
-			a {
-				font-size: 15px;
-
-				color: #0400ff;
-				&:hover {
-					color: #00bfff;
-				}
-			}
-		}
-
 		h2 {
-			font-size: 23px;
+			font-size: 22px;
 		}
 
-		div {
-			input {
-				min-width: 230px;
+		form {
+			all: unset;
+			display: flex;
+			flex-direction: column;
+			gap: 10px;
+
+			> div input {
+				width: 100%;
+				max-width: 213px;
 			}
 		}
-
-		button {
-			min-width: 230px;
-		}
-	}
-
-	@media screen and (min-width: 425px) and (max-width: 767px) {
-		width: 100%;
-		height: 285px;
-		border-radius: 0 0 7px 7px;
-
-		p {
-			font-size: 16px;
-			a {
-				font-size: 16px;
-
-				color: #0400ff;
-				&:hover {
-					color: #00bfff;
-				}
-			}
-		}
-
-		h2 {
-			font-size: 25px;
-		}
-
-		div {
-			input {
-				min-width: 250px;
-			}
-		}
-
-		button {
-			min-width: 250px;
-		}
-	}
-
-	@media screen and (min-width: 768px) and (max-width: 1023px) {
-		width: 50%;
-		border-radius: 0 7px 7px 0;
 
 		p {
 			font-size: 14px;
@@ -176,18 +110,121 @@ export const LoginForm = styled.div`
 			}
 		}
 
+		button {
+			width: 100%;
+		}
+	}
+
+	@media screen and (min-width: 375px) and (max-width: 424px) {
+		width: 100%;
+		height: 280px;
+		border-radius: 0 0 7px 7px;
+
 		h2 {
 			font-size: 22px;
 		}
 
-		div {
-			input {
-				min-width: 220px;
+		form {
+			all: unset;
+			display: flex;
+			flex-direction: column;
+			gap: 10px;
+
+			> div input {
+				width: 100%;
+				min-width: 233px;
+			}
+		}
+
+		p {
+			font-size: 14px;
+			a {
+				font-size: 14px;
+
+				color: #0400ff;
+				&:hover {
+					color: #00bfff;
+				}
 			}
 		}
 
 		button {
-			width: 84%;
+			width: 100%;
+		}
+	}
+
+	@media screen and (min-width: 425px) and (max-width: 767px) {
+		width: 100%;
+		height: 285px;
+		border-radius: 0 0 7px 7px;
+
+		h2 {
+			font-size: 22px;
+		}
+
+		form {
+			all: unset;
+			display: flex;
+			flex-direction: column;
+			gap: 10px;
+
+			> div input {
+				width: 100%;
+				min-width: 253px;
+			}
+		}
+
+		p {
+			font-size: 14px;
+			a {
+				font-size: 14px;
+
+				color: #0400ff;
+				&:hover {
+					color: #00bfff;
+				}
+			}
+		}
+
+		button {
+			width: 100%;
+		}
+	}
+
+	@media screen and (min-width: 768px) and (max-width: 1023px) {
+		width: 50%;
+		border-radius: 0 7px 7px 0;
+
+		h2 {
+			font-size: 22px;
+		}
+
+		form {
+			all: unset;
+			display: flex;
+			flex-direction: column;
+			gap: 10px;
+
+			> div input {
+				width: 100%;
+				min-width: 233px;
+			}
+		}
+
+		p {
+			font-size: 14px;
+			a {
+				font-size: 14px;
+
+				color: #0400ff;
+				&:hover {
+					color: #00bfff;
+				}
+			}
+		}
+
+		button {
+			width: 100%;
 		}
 	}
 

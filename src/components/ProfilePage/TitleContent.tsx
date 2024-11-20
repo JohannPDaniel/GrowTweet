@@ -6,7 +6,7 @@ export const TitleContent = () => {
 	return (
 		<TitleContentStyled>
 			<div>
-				<Link to=''>
+				<Link to='/'>
 					<img
 						src={iconeSeta}
 						alt='Voltar para a página inicial'

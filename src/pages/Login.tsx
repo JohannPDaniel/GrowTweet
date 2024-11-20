@@ -1,8 +1,25 @@
-import { Link } from "react-router-dom";
-import { InfoSection } from "../components/Login/InfoSection";
-import { LoginForm } from "../components/Login/LoginForm";
-import { MainLogin } from "../components/Login/MainLogin";
-import { SectionWrapper } from "../components/Login/SectionWrapper";
+import { Link } from 'react-router-dom';
+import { InfoSection } from '../components/Login/InfoSection';
+import { LoginForm } from '../components/Login/LoginForm';
+import { MainLogin } from '../components/Login/MainLogin';
+import { SectionWrapper } from '../components/Login/SectionWrapper';
+
+const inputsLogin = [
+	{
+		htmlFor: "email",
+		label: "Email:",
+		type: "email",
+		name: "email",
+		id: "email"
+	},
+	{
+		htmlFor: "password",
+		label: "password:",
+		type: "password",
+		name: "password",
+		id: "password"
+	}
+]
 
 export const Login = () => {
 	return (
@@ -22,24 +39,22 @@ export const Login = () => {
 				</InfoSection>
 				<LoginForm>
 					<h2>Entrar no Growtwitter</h2>
-					<div>
-						<label htmlFor='username'>Username</label>
-						<input
-							type='text'
-							name='username'
-						/>
-					</div>
-					<div>
-						<label htmlFor='password'>Password</label>
-						<input
-							type='text'
-							name='password'
-						/>
-					</div>
-
-					<p>Ainda não tem conta? <Link to="/signup">Criar conta</Link></p>
-
-					<button>Entrar</button>
+					<form>
+						{inputsLogin.map((input, index) => (
+							<div key={index}>
+								<label htmlFor={input.htmlFor}>{input.label}</label>
+								<input
+									type={input.type}
+									name={ input.name }
+									id={input.id}
+								/>
+							</div>
+						))}
+						<p>
+							Ainda não tem conta? <Link to='/signup'>Criar conta</Link>
+						</p>
+						<button>Entrar</button>
+					</form>
 				</LoginForm>
 			</SectionWrapper>
 		</MainLogin>

@@ -1,46 +1,27 @@
 import { MainLogin } from '../components/Login/MainLogin';
 import { SectionWrapper } from '../components/Login/SectionWrapper';
 import { ContentSignUp } from '../components/SignUp/ContentSignUp';
-
-const inputLabels = [
-	{
-		htmlFor: 'nome',
-		label: 'Nome:',
-		type: 'text',
-		name: 'nome',
-		id: 'nome',
-	},
-	{
-		htmlFor: 'email',
-		label: 'Email:',
-		type: 'email',
-		name: 'email',
-		id: 'email',
-	},
-	{
-		htmlFor: 'username',
-		label: 'Username:',
-		type: 'text',
-		name: 'username',
-		id: 'username',
-	},
-	{
-		htmlFor: 'password',
-		label: 'Senha:',
-		type: 'password',
-		name: 'password',
-		id: 'password',
-	},
-	{
-		htmlFor: 'confirmPassword',
-		label: 'Confirmar senha:',
-		type: 'password',
-		name: 'confirmPassword',
-		id: 'confirmPassword',
-	},
-];
+import { inputLabels } from '../config/types/InputLabel';
 
 export const SignUp = () => {
+	function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+		e.preventDefault();
+
+		const data = {
+			name: e.currentTarget.nome.value,
+			email: e.currentTarget.email.value,
+			username: e.currentTarget.username.value,
+			password: e.currentTarget.password.value,
+		};
+
+		const confirmPassword = e.currentTarget.confirmPassword.value;
+
+		if (data.password !== confirmPassword) {
+			alert('As senhas não são iguais !');
+			return;
+		}
+	}
+
 	return (
 		<MainLogin $flexDirection>
 			<SectionWrapper
@@ -51,7 +32,7 @@ export const SignUp = () => {
 				<ContentSignUp>
 					<h1>Cadastro de usuário</h1>
 
-					<form>
+					<form onSubmit={handleSubmit}>
 						{inputLabels.map((inputLabel, index) => (
 							<div key={index}>
 								<label htmlFor={inputLabel.htmlFor}>{inputLabel.label}</label>
