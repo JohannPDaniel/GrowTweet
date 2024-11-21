@@ -8,7 +8,7 @@ interface SectionWrapperProps {
 	$flexDirection?: boolean;
 }
 
-export const SectionWrapper = styled.div<SectionWrapperProps>`
+export const SectionWrapperStyled = styled.div<SectionWrapperProps>`
 	width: 100%;
 	height: auto;
 	border-radius: 7px;

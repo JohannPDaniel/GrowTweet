@@ -22,7 +22,7 @@ export async function signUp(data: SignUpRequest) {
 export async function login(data: LoginRequest) {
 	try {
 		const response = await api.post<
-			ResponseApi<{ token: string; studentId: string }>
+			ResponseApi<{ token: string }>
 		>('/login', data);
 
 		return {

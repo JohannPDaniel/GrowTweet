@@ -18,7 +18,7 @@ const icons = [
 	{
 		image: iconePaginaInicial,
 		label: 'Pagina inicial',
-		to: '/',
+		to: '/homepage',
 		activeImage: iconePaginaInicialSelecionado.replace('normal', 'active'),
 	},
 	{

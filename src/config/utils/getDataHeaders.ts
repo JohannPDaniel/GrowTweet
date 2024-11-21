@@ -4,7 +4,14 @@ export function getDataHeaders() {
 	);
 	const localData = JSON.parse(localStorage.getItem('dataHeaders') || 'null');
 
-	const data = sessionData ? sessionData : localData;
+	const data: DataTokens = sessionData ? sessionData : localData;
 
-	return data ? { token: data.token, studentId: data.studentId } : null;
+	return data ? { token: data.token } : null;
+}
+
+interface DataTokens {
+	token: string;
+	userId: string;
+	tweetId: string;
+	followerId: string
 }

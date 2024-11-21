@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const LoginForm = styled.div`
+export const LoginFormStyled = styled.div`
 	width: 50%;
 	height: auto;
 	padding: 24px 16px;
@@ -16,7 +16,6 @@ export const LoginForm = styled.div`
 	@media screen and (min-width: 320px) and (max-width: 374px) {
 		width: 100%;
 		border-radius: 0 0 7px 7px;
-
 	}
 
 	@media screen and (min-width: 375px) and (max-width: 424px) {

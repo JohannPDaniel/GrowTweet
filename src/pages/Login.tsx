@@ -1,13 +1,15 @@
-import { Link, useNavigate } from 'react-router-dom';
-import { InfoSection } from '../components/Login/InfoSection';
-import { LoginForm } from '../components/Login/LoginForm';
-import { MainLogin } from '../components/Login/MainLogin';
-import { SectionWrapper } from '../components/Login/SectionWrapper';
-import { FormContentStyled } from '../components/Login/FormContentStyled';
-import { inputsLogin } from '../config/types/InputLabel';
 import { useEffect, useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import { FormContentStyled } from '../components/Login/FormContentStyled';
+import { login } from '../config/services/auth.service';
+import { inputsLogin } from '../config/types/InputLabel';
 import { getDataHeaders } from '../config/utils/getDataHeaders';
-import { login } from "../config/services/auth.service";
+import {
+	InfoSectionStyled,
+	LoginFormStyled,
+	MainLoginStyled,
+	SectionWrapperStyled,
+} from '../components/Login';
 
 export const Login = () => {
 	const [checked, setChecked] = useState(false);
@@ -22,6 +24,7 @@ export const Login = () => {
 			email: e.currentTarget.email.value,
 			password: e.currentTarget.password.value,
 		};
+
 		setLoading(true);
 		const response = await login(dataBody);
 		setLoading(false);
@@ -31,32 +34,29 @@ export const Login = () => {
 			return;
 		}
 
-		const dataTokens = {
-			token: response.data?.token,
-			studentId: response.data?.studentId,
-		};
+		const dataHeaders = response.data?.token;
 
 		if (checked) {
-			localStorage.setItem('dataHeaders', JSON.stringify(dataTokens));
+			localStorage.setItem('dataHeaders', JSON.stringify(dataHeaders));
 		}
-		sessionStorage.setItem('dataHeaders', JSON.stringify(dataTokens));
+		sessionStorage.setItem('dataHeaders', JSON.stringify(dataHeaders));
 
 		alert(response.message);
-		navigate('/home');
+		navigate('/homepage');
 	}
 
-		useEffect(() => {
-			if (dataHeaders?.token) {
-				navigate('/home');
-				return;
-			}
-		}, [dataHeaders?.token, navigate]);
-
+	useEffect(() => {
+		if (dataHeaders?.token) {
+			navigate('/homepage');
+			return;
+		}
+		console.log('dataHeaders:', dataHeaders);
+	}, [dataHeaders?.token, navigate]);
 
 	return (
-		<MainLogin>
-			<SectionWrapper $minHeight>
-				<InfoSection>
+		<MainLoginStyled>
+			<SectionWrapperStyled $minHeight>
+				<InfoSectionStyled>
 					<h1>Growtwitter</h1>
 					<small>Trabalho final do bloco intermediário</small>
 
@@ -67,10 +67,10 @@ export const Login = () => {
 						comunidade que valoriza a liberdade de expressão, a conexão com
 						pessoas de todo o mundo e a disseminação de ideias.
 					</p>
-				</InfoSection>
-				<LoginForm>
+				</InfoSectionStyled>
+				<LoginFormStyled>
 					<h2>Entrar no Growtwitter</h2>
-					<FormContentStyled>
+					<FormContentStyled onSubmit={onSubmit}>
 						{inputsLogin.map((input, index) => (
 							<div
 								key={index}
@@ -96,10 +96,12 @@ export const Login = () => {
 						<p>
 							Ainda não tem conta? <Link to='/signup'>Criar conta</Link>
 						</p>
-						<button disabled={loading}>Entrar</button>
+						<button disabled={loading}>
+							{loading ? 'Carregando...' : 'Entrar'}
+						</button>
 					</FormContentStyled>
-				</LoginForm>
-			</SectionWrapper>
-		</MainLogin>
+				</LoginFormStyled>
+			</SectionWrapperStyled>
+		</MainLoginStyled>
 	);
 };

@@ -6,7 +6,7 @@ interface MainLoginProps {
     $flexDirection?: boolean
 }
 
-export const MainLogin = styled.div<MainLoginProps>`
+export const MainLoginStyled = styled.div<MainLoginProps>`
 	width: 100%;
 	height: auto;
 	min-height: 100vh;

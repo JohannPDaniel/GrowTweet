@@ -1,10 +1,9 @@
 import { useState } from 'react';
-import { MainLogin } from '../components/Login/MainLogin';
-import { SectionWrapper } from '../components/Login/SectionWrapper';
-import { ContentSignUp } from '../components/SignUp/ContentSignUp';
-import { inputLabels } from '../config/types/InputLabel';
-import { signUp } from '../config/services/auth.service';
 import { useNavigate } from 'react-router-dom';
+import { ContentSignUp } from '../components/SignUp/ContentSignUp';
+import { signUp } from '../config/services/auth.service';
+import { inputLabels } from '../config/types/InputLabel';
+import { MainLoginStyled, SectionWrapperStyled } from "../components/Login";
 
 export const SignUp = () => {
 	const [loading, setLoading] = useState(false);
@@ -43,8 +42,8 @@ export const SignUp = () => {
 	}
 
 	return (
-		<MainLogin $flexDirection>
-			<SectionWrapper
+		<MainLoginStyled $flexDirection>
+			<SectionWrapperStyled
 				$minWidth
 				$maxWidth
 				$flexBasis
@@ -74,7 +73,7 @@ export const SignUp = () => {
 						</div>
 					</form>
 				</ContentSignUp>
-			</SectionWrapper>
-		</MainLogin>
+			</SectionWrapperStyled>
+		</MainLoginStyled>
 	);
 };

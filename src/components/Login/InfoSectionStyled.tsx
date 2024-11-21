@@ -2,7 +2,7 @@
 
 import styled from 'styled-components';
 
-export const InfoSection = styled.div`
+export const InfoSectionStyled = styled.div`
 	width: 55%;
 	height: auto;
 	padding: 12px 24px;
