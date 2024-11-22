@@ -16,7 +16,7 @@ export const ProfilePage = () => {
 			navigate('/');
 			return;
 		}
-	}, [dataHeaders?.token, navigate]);
+	}, []);
 
 	return (
 		<DefaultLayout>

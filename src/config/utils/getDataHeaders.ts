@@ -1,17 +1,8 @@
 export function getDataHeaders() {
-	const sessionData = JSON.parse(
-		sessionStorage.getItem('dataHeaders') || 'null'
-	);
-	const localData = JSON.parse(localStorage.getItem('dataHeaders') || 'null');
+	const sessionData = sessionStorage.getItem('dataHeaders');
+	const localData = localStorage.getItem('dataHeaders');
 
-	const data: DataTokens = sessionData ? sessionData : localData;
+	const data = sessionData ?? localData
 
-	return data ? { token: data.token } : null;
-}
-
-interface DataTokens {
-	token: string;
-	userId: string;
-	tweetId: string;
-	followerId: string
+	return data ? JSON.parse(data) : null;
 }

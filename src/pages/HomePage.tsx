@@ -10,11 +10,11 @@ export const HomePage = () => {
 	const navigate = useNavigate();
 
 	useEffect(() => {
-		if (dataHeaders?.token) {
+		if (!dataHeaders?.token) {
 			navigate('/');
 			return;
 		}
-	}, [dataHeaders?.token, navigate]);
+	}, []);
 
 	return (
 		<DefaultLayout>

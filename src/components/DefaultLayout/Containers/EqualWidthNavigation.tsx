@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useMemo, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import {
 	iconeExplorar,
@@ -9,21 +9,15 @@ import {
 	iconePerfilSelecionado,
 	iconeResponder,
 } from '../../../assets/Imagens/light_color';
-import { EqualWidthNavigationStyled } from './styled/EqualWidthNavigationStyled';
 import { UpsertModal } from '../../Modal/UpsertModal';
+import { EqualWidthNavigationStyled } from './styled/EqualWidthNavigationStyled';
 
 const navigations = [
 	{
 		icone: iconePaginaInicial,
 		alt: 'Página Inicial',
-		to: '/',
+		to: '/homepage',
 		activeImage: iconePaginaInicialSelecionado,
-	},
-	{
-		icone: iconeResponder,
-		alt: 'Tweetar',
-		to: '',
-		activeImage: iconeResponder,
 	},
 	{
 		icone: iconeExplorar,
@@ -40,55 +34,52 @@ const navigations = [
 ];
 
 export const EqualWidthNavigation = () => {
+	const [isModalOpen, setIsModalOpen] = useState(false);
+	const [isTweet, setIsTweet] = useState(false);
+
 	const { pathname } = useLocation();
-
-	const [isModalOpen, setModalOpen] = useState(false);
-	const [activeIndex, setActiveIndex] = useState(() =>
-		navigations.findIndex((nav) => nav.to === pathname)
-	);
-
-	const handleButtonClick = (
-		index: number,
-		nav: (typeof navigations)[number]
-	) => {
-		setActiveIndex(index);
-		if (nav.alt === 'Tweetar') {
-			setModalOpen(true);
-		}
-	};
-
-	useEffect(() => {
-		const currentIndex = navigations.findIndex((nav) => nav.to === pathname);
-		if (currentIndex !== -1) {
-			setActiveIndex(currentIndex);
-		}
+	const activeIndex = useMemo(() => {
+		return navigations.findIndex((nav) => nav.to === pathname);
 	}, [pathname]);
+
+	const handleModal = () => {
+		setIsModalOpen(!isModalOpen);
+		setIsTweet(!isTweet);
+	};
 
 	return (
 		<>
-			<EqualWidthNavigationStyled>
+			<EqualWidthNavigationStyled
+				$backgroundColor={isTweet}
+				$filter={isTweet}>
 				{navigations.map((nav, index) => (
 					<Link
 						to={nav.to}
 						key={index}
-						onClick={(e) => {
-							if (nav.alt === 'Tweetar') {
-								e.preventDefault();
-							}
-							handleButtonClick(index, nav);
-						}}
-						className={activeIndex === index ? 'active' : ''}>
+						className={activeIndex === index ? 'active' : ''}
+						aria-current={activeIndex === index ? 'page' : undefined}
+						aria-label={nav.alt} 
+					>
 						<img
 							src={activeIndex === index ? nav.activeImage : nav.icone}
 							alt={nav.alt}
 						/>
 					</Link>
 				))}
+
+				<button
+					>
+					<img
+						src={iconeResponder}
+						alt='icone de responder'
+						onClick={handleModal}
+					/>
+				</button>
 			</EqualWidthNavigationStyled>
 
 			<UpsertModal
 				isOpen={isModalOpen}
-				onClose={() => setModalOpen(false)}
+				onClose={() => setIsModalOpen(false)}
 			/>
 		</>
 	);

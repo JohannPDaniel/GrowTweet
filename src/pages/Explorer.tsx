@@ -46,7 +46,7 @@ export const Explorer = () => {
 			navigate('/');
 			return;
 		}
-	}, [dataHeaders?.token, navigate]);
+	}, []);
 
 	return (
 		<DefaultLayout>

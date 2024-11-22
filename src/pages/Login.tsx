@@ -34,7 +34,10 @@ export const Login = () => {
 			return;
 		}
 
-		const dataHeaders = response.data?.token;
+		const dataHeaders = {
+			token: response.data?.token,
+			userId: "meu id"
+		};
 
 		if (checked) {
 			localStorage.setItem('dataHeaders', JSON.stringify(dataHeaders));
@@ -50,8 +53,7 @@ export const Login = () => {
 			navigate('/homepage');
 			return;
 		}
-		console.log('dataHeaders:', dataHeaders);
-	}, [dataHeaders?.token, navigate]);
+	}, []);
 
 	return (
 		<MainLoginStyled>
