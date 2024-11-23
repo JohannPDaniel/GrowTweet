@@ -8,9 +8,11 @@ import {
 	iconePerfil,
 	iconePerfilSelecionado,
 	iconeResponder,
+	iconeSair,
 } from '../../../assets/Imagens/light_color';
 import { UpsertModal } from '../../Modal/UpsertModal';
 import { EqualWidthNavigationStyled } from './styled/EqualWidthNavigationStyled';
+import { LogoutModal } from "../../Modal/LogoutModal";
 
 const navigations = [
 	{
@@ -30,6 +32,12 @@ const navigations = [
 		alt: 'Perfil',
 		to: '/profilepage',
 		activeImage: iconePerfilSelecionado,
+	},
+	{
+		icone: iconeSair,
+		alt: 'Sair',
+		to: '',
+		activeImage: iconeSair,
 	},
 ];
 
@@ -58,8 +66,7 @@ export const EqualWidthNavigation = () => {
 						key={index}
 						className={activeIndex === index ? 'active' : ''}
 						aria-current={activeIndex === index ? 'page' : undefined}
-						aria-label={nav.alt} 
-					>
+						aria-label={nav.alt}>
 						<img
 							src={activeIndex === index ? nav.activeImage : nav.icone}
 							alt={nav.alt}
@@ -67,8 +74,7 @@ export const EqualWidthNavigation = () => {
 					</Link>
 				))}
 
-				<button
-					>
+				<button>
 					<img
 						src={iconeResponder}
 						alt='icone de responder'
@@ -81,6 +87,8 @@ export const EqualWidthNavigation = () => {
 				isOpen={isModalOpen}
 				onClose={() => setIsModalOpen(false)}
 			/>
+
+			<LogoutModal isOpen={isModalOpen} onClose={handleModal} />
 		</>
 	);
 };

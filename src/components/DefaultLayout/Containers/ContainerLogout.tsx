@@ -5,11 +5,10 @@ import { LogoutStyled } from '../Styled';
 import { ContainerLogoutStyled } from './styled';
 
 export const ContainerLogout = () => {
-	const [ isOpen, setIsOpen ] = useState( false );
+	const [isOpen, setIsOpen] = useState(false);
 	const closeModal = () => {
 		setIsOpen(!isOpen);
 	};
-
 
 	return (
 		<ContainerLogoutStyled>

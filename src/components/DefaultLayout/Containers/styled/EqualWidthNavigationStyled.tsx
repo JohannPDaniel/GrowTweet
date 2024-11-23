@@ -17,7 +17,7 @@ export const EqualWidthNavigationStyled = styled.div<EqualWidthNavigationProps>`
 	a {
 		text-decoration: none;
 		font-size: 17px;
-		width: 33.33%;
+		width: 25%;
 		text-align: center;
 		padding: 12px;
 		background-color: #243c5f;

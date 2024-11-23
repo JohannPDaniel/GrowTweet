@@ -16,7 +16,6 @@ export const LogoutModal = ({ isOpen, onClose }: LogoutModalProps) => {
 	const navigate = useNavigate();
 	const [loading, setLoading] = useState(false);
 
-	// Função para executar o logout quando o botão "Sair" for clicado
 	const handleLogout = useCallback(async () => {
 		const dataHeaders = getDataHeaders();
 
@@ -26,27 +25,20 @@ export const LogoutModal = ({ isOpen, onClose }: LogoutModalProps) => {
 		}
 
 		setLoading(true);
+		const response = await logout(dataHeaders);
+		setLoading(false);
 
-		try {
-			const response = await logout(dataHeaders);
-			setLoading(false);
-
-			if (!response.success) {
-				alert(response.message);
-				return;
-			}
-
-			// Remove os dados de autenticação
-			localStorage.removeItem('dataHeaders');
-			sessionStorage.removeItem('dataHeaders');
+		if (!response.success) {
 			alert(response.message);
-
-			// Redireciona para a página inicial
-			navigate('/');
-		} catch (error) {
-			setLoading(false);
-			alert('Erro ao realizar logout.');
+			return;
 		}
+
+		localStorage.removeItem('dataHeaders');
+		sessionStorage.removeItem('dataHeaders');
+
+		alert(response.message);
+
+		navigate('/');
 	}, [navigate]);
 
 	return (
@@ -63,7 +55,7 @@ export const LogoutModal = ({ isOpen, onClose }: LogoutModalProps) => {
 						Cancelar
 					</ButtonStyled>
 					<ButtonStyled
-						onClick={handleLogout} // Apenas clicando aqui executará o logout
+						onClick={handleLogout}
 						$theme='success'
 						disabled={loading}>
 						{loading ? 'Saindo...' : 'Sair'}

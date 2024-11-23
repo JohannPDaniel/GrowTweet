@@ -18,3 +18,4 @@ export { default as iconeLogoGrowdev } from './growdev.png';
 export { default as iconePontinhos } from './pontinhos.png';
 export { default as iconeAtualizar } from './Atualizar.png';
 export { default as iconeApagar } from './Apagar.png';
+export { default as iconeSair } from './sair.svg';
