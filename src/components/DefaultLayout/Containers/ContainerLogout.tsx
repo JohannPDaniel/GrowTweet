@@ -1,3 +1,4 @@
+import { LogoutModal } from "../../Modal/LogoutModal";
 import { ProfileLogout } from "../ProfileLogout";
 import {
 	LogoutStyled
@@ -10,8 +11,9 @@ export const ContainerLogout = () => {
 			<ProfileLogout />
 			
 			<LogoutStyled>
-				<p>Sair</p>
+				<p onClick={() => {}}>Sair</p>
 			</LogoutStyled>
+			<LogoutModal />
 		</ContainerLogoutStyled>
 	);
 };

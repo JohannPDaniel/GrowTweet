@@ -2,7 +2,7 @@
 
 import styled from "styled-components";
 
-export const Box = styled.textarea`
+export const BoxStyled = styled.textarea`
 	width: 100%;
 	height: auto;
 	min-height: 150px;

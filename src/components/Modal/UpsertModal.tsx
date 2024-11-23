@@ -1,7 +1,8 @@
 import { iconeX } from '../../assets/Imagens/light_color';
-import { ButtonStyled } from "../DefaultLayout/Styled";
-import { Box } from './Box';
+import { ButtonStyled } from '../DefaultLayout/Styled';
 import { Modal } from './Modal';
+import { ButtonSectionStyled, CloseModalStyled } from './ModalStyled';
+import { BoxStyled } from './ModalStyled/BoxStyled';
 
 interface UpsertModalProps {
 	isOpen: boolean;
@@ -13,19 +14,19 @@ export const UpsertModal = ({ isOpen, onClose }: UpsertModalProps) => {
 		<Modal
 			isOpen={isOpen}
 			onClose={onClose}>
-			<div>
+			<CloseModalStyled>
 				<img
 					src={iconeX}
 					alt='Icone de Fechar'
 					onClick={onClose}
 				/>
-			</div>
-			<Box
+			</CloseModalStyled>
+			<BoxStyled
 				name='message'
-				placeholder='O que está acontecendo ?'></Box>
-			<section>
-				<ButtonStyled $height={false}>Tweetar</ButtonStyled>
-			</section>
+				placeholder='O que está acontecendo ?'></BoxStyled>
+			<ButtonSectionStyled>
+				<ButtonStyled  $height={false}>Tweetar</ButtonStyled>
+			</ButtonSectionStyled>
 		</Modal>
 	);
 };

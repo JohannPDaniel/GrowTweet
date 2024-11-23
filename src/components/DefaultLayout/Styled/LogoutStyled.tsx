@@ -9,5 +9,6 @@ export const LogoutStyled = styled.div`
 	p {
 		font-size: 12px;
 		color: #828282;
+		cursor: pointer;
 	}
 `;
