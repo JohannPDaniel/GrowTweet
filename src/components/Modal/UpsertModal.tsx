@@ -24,8 +24,8 @@ export const UpsertModal = ({ isOpen, onClose }: UpsertModalProps) => {
 			<BoxStyled
 				name='message'
 				placeholder='O que está acontecendo ?'></BoxStyled>
-			<ButtonSectionStyled>
-				<ButtonStyled  $height={false}>Tweetar</ButtonStyled>
+			<ButtonSectionStyled $justifyContent='flex-end'>
+				<ButtonStyled $height={false}>Tweetar</ButtonStyled>
 			</ButtonSectionStyled>
 		</Modal>
 	);

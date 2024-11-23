@@ -85,7 +85,7 @@ export const ContainerLogos = () => {
 			<ButtonStyled
 				$height
 				$marginTop
-				$maxWidth
+				$maxWidth="lg"
 				$fontSize
 				onClick={handleModal}>
 				Tweetar

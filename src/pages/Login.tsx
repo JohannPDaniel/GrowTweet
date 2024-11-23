@@ -10,12 +10,13 @@ import {
 	MainLoginStyled,
 	SectionWrapperStyled,
 } from '../components/Login';
+import { Headers } from "../config/types/headers";
 
 export const Login = () => {
 	const [checked, setChecked] = useState(false);
 	const [loading, setLoading] = useState(false);
 	const navigate = useNavigate();
-	const dataHeaders = getDataHeaders();
+	const headers = getDataHeaders();
 
 	async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
 		e.preventDefault();
@@ -34,9 +35,11 @@ export const Login = () => {
 			return;
 		}
 
-		const dataHeaders = {
-			token: response.data?.token,
-			userId: "meu id"
+		const dataHeaders: Headers = {
+			token: response.data?.token || '',
+			userId: response.data?.userId || '',
+			tweetId: response.data?.tweetId || '',
+			followerId: response.data?.followerId || '',
 		};
 
 		if (checked) {
@@ -49,7 +52,7 @@ export const Login = () => {
 	}
 
 	useEffect(() => {
-		if (dataHeaders?.token) {
+		if (headers?.token) {
 			navigate('/homepage');
 			return;
 		}
