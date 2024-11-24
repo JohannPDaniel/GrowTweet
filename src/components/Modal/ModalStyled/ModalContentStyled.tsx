@@ -11,7 +11,7 @@ export const ModalContentStyled = styled.div<ModalContentStyledProps>`
 	box-shadow: 0 0 16px rgba(0, 0, 0, 0.5);
 
 	@media screen and (min-width: 320px) and (max-width: 374px) {
-		min-width: 250px;
+		max-width: 260px;
 	}
 
 	@media screen and (min-width: 375px) and (max-width: 424px) {
@@ -19,7 +19,7 @@ export const ModalContentStyled = styled.div<ModalContentStyledProps>`
 	}
 
 	@media screen and (min-width: 425px) and (max-width: 480px) {
-		min-width: 350px;
+		min-width: 300px;
 	}
 
 	@media screen and (min-width: 480px) {

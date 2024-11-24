@@ -43,6 +43,7 @@ const navigations = [
 
 export const EqualWidthNavigation = () => {
 	const [isModalOpen, setIsModalOpen] = useState(false);
+	const [isCloseModalOpen, setIsCloseModalOpen] = useState(false);
 	const [isTweet, setIsTweet] = useState(false);
 
 	const { pathname } = useLocation();
@@ -53,6 +54,14 @@ export const EqualWidthNavigation = () => {
 	const handleModal = () => {
 		setIsModalOpen(!isModalOpen);
 		setIsTweet(!isTweet);
+	};
+
+	const closeModal = (navAlt: string) => {
+		if (navAlt === 'Sair') {
+			setIsCloseModalOpen(true); // Abre o modal de logout
+		} else {
+			setIsTweet(!isTweet); // Função original para outro modal
+		}
 	};
 
 	return (
@@ -70,6 +79,7 @@ export const EqualWidthNavigation = () => {
 						<img
 							src={activeIndex === index ? nav.activeImage : nav.icone}
 							alt={nav.alt}
+							onClick={() => closeModal(nav.alt)}
 						/>
 					</Link>
 				))}
@@ -88,7 +98,10 @@ export const EqualWidthNavigation = () => {
 				onClose={() => setIsModalOpen(false)}
 			/>
 
-			<LogoutModal isOpen={isModalOpen} onClose={handleModal} />
+			<LogoutModal
+				isOpen={isCloseModalOpen}
+				onClose={() => setIsCloseModalOpen(false)}
+			/>
 		</>
 	);
 };
