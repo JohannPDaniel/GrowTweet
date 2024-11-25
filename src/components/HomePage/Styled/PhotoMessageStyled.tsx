@@ -12,11 +12,8 @@ export const MessageStyled = styled.div`
 	flex-direction: column;
 	gap: 1px;
 
-	> div {
-	}
-
 	> p {
-		font-size: 12px;
+		font-size: 13px;
 		color: #333;
 	}
 `;

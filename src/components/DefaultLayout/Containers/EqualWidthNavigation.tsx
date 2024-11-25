@@ -58,9 +58,9 @@ export const EqualWidthNavigation = () => {
 
 	const closeModal = (navAlt: string) => {
 		if (navAlt === 'Sair') {
-			setIsCloseModalOpen(true); // Abre o modal de logout
+			setIsCloseModalOpen(true);
 		} else {
-			setIsTweet(!isTweet); // Função original para outro modal
+			setIsTweet(!isTweet);
 		}
 	};
 

@@ -1,42 +1,38 @@
-import { useState } from 'react';
-import {
-	iconeApagar,
-	iconeAtualizar,
-	iconeLogoGrowdev,
-	iconePontinhos,
-} from '../../assets/Imagens/light_color';
+import { useEffect, useState } from 'react';
+import { iconeLogoGrowdev } from '../../assets/Imagens/light_color';
+import { User } from '../../config/types/User';
 import { PhotoProfileStyled } from '../DefaultLayout/Styled';
 import { MessageTitleStyled } from './Styled/MessageTitleStyled';
 import { MessageStyled, PhotoMessageStyled } from './Styled/PhotoMessageStyled';
-import { UpdateDeleteStyled } from './Styled/UpdateDeleteStyled';
+import { UpdateDelete } from './UpdateDelete';
 
-const upletes = [
-	{
-		image: iconeAtualizar,
-		alt: 'Atualizar',
-		name: 'Editar',
-	},
-	{
-		image: iconeApagar,
-		alt: 'Apagar',
-		name: 'Deletar',
-	},
-];
+interface PhotoMessageProps {
+	user: User;
+	loading: boolean;
+}
 
-export const PhotoMessage = () => {
-	const [isOpen, setIsOpen] = useState(false);
+export const PhotoMessage = ({ user }: PhotoMessageProps) => {
+	const [isOpen, setIsOpen] = useState<boolean>(false);
+	const [currentTime, setCurrentTime] = useState<Date>(new Date());
 
-	const toggleDropdown = (e: React.MouseEvent) => {
-		e.stopPropagation();
+	const toggleDropdown = () => {
 		setIsOpen(!isOpen);
 	};
 
-	const closeDropdown = () => {
-		setIsOpen(false);
-	};
+	useEffect(() => {
+		const timer = setInterval(() => {
+			setCurrentTime(new Date());
+		}, 10);
+
+		return () => clearInterval(timer);
+	}, []);
+
+	const timeDifferenceInHours = Math.floor(
+		(currentTime.getTime() - new Date(user.createdAt).getTime()) / 3600000
+	);
 
 	return (
-		<PhotoMessageStyled onClick={closeDropdown}>
+		<PhotoMessageStyled>
 			<PhotoProfileStyled
 				src={iconeLogoGrowdev}
 				alt='imagem da pessoa'
@@ -44,33 +40,21 @@ export const PhotoMessage = () => {
 			<MessageStyled>
 				<MessageTitleStyled>
 					<div>
-						<strong>Emanoel</strong>
+						<strong>{user.name}</strong>
 						<p>
-							@ema <span>&bull; 3h</span>
+							@{user.username}
+							<span>
+								&bull;&nbsp;
+								{timeDifferenceInHours}h
+							</span>
 						</p>
 					</div>
-					<UpdateDeleteStyled $display={isOpen}>
-						<img
-							src={iconePontinhos}
-							alt='Editar ou deletar'
-							onClick={toggleDropdown}
-						/>
-						<div className='dropdown-content'>
-							{upletes.map((uplete, index) => (
-								<div
-									key={index}
-									className='dropdown-editar'>
-									<img
-										src={uplete.image}
-										alt={uplete.alt}
-									/>
-									<p>{uplete.name}</p>
-								</div>
-							))}
-						</div>
-					</UpdateDeleteStyled>
+					<UpdateDelete
+						isOpen={isOpen}
+						onClose={toggleDropdown}
+					/>
 				</MessageTitleStyled>
-				<p>Tô de olhooo ein</p>
+				<p>To de olhooo ein</p>
 			</MessageStyled>
 		</PhotoMessageStyled>
 	);

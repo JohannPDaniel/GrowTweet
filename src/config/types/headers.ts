@@ -4,3 +4,6 @@ export interface Headers {
     tweetId: string;
     followerId: string
 }
+
+export type token = Pick<Headers, "token">
+export type HeadersForTweet = Pick<Headers, "token" | "userId">
