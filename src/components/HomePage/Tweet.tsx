@@ -2,17 +2,20 @@ import { PhotoMessage } from './PhotoMessage';
 import { LikeReply } from './LikeReply';
 import { TweetStyled } from './Styled/TweetStyled';
 import { User } from '../../config/types/User';
+import { TweetTypes } from '../../config/types/tweet.types';
 
 interface TweetProps {
 	user: User;
-	loading: boolean
+	tweet: TweetTypes;
+	loading: boolean;
 }
 
-export const Tweet = ({ user, loading }: TweetProps) => {
+export const Tweet = ({ user, tweet, loading }: TweetProps) => {
 	return (
 		<TweetStyled>
 			<PhotoMessage
-				user={ user }
+				user={user}
+				tweet={tweet}
 				loading={loading}
 			/>
 			<LikeReply />

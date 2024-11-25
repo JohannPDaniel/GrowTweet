@@ -1,10 +1,10 @@
-import { HeadersForTweet } from "../types/headers";
-import { CreateTweet } from '../types/tweet.types';
-import { api } from './api.service';
+import { Headers } from "../types/headers";
+import { TweetId, TweetTypes } from '../types/tweet.types';
+import { api, ResponseApi } from './api.service';
 
-export async function tweet(body: CreateTweet, headers: HeadersForTweet) {
+export async function GetTweet(id: TweetId, headers: Headers) {
 	try {
-		const response = await api.post('tweets', body, {
+		const response = await api.get<ResponseApi<TweetTypes>>(`tweets/${id}`, {
 			headers: {
 				Authorization: headers.token,
 				'x-user-id': headers.userId,

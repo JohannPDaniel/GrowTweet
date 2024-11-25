@@ -5,13 +5,15 @@ import { PhotoProfileStyled } from '../DefaultLayout/Styled';
 import { MessageTitleStyled } from './Styled/MessageTitleStyled';
 import { MessageStyled, PhotoMessageStyled } from './Styled/PhotoMessageStyled';
 import { UpdateDelete } from './UpdateDelete';
+import { TweetTypes } from "../../config/types/tweet.types";
 
 interface PhotoMessageProps {
 	user: User;
+	tweet: TweetTypes
 	loading: boolean;
 }
 
-export const PhotoMessage = ({ user }: PhotoMessageProps) => {
+export const PhotoMessage = ({ user, tweet }: PhotoMessageProps) => {
 	const [isOpen, setIsOpen] = useState<boolean>(false);
 	const [currentTime, setCurrentTime] = useState<Date>(new Date());
 
@@ -28,7 +30,7 @@ export const PhotoMessage = ({ user }: PhotoMessageProps) => {
 	}, []);
 
 	const timeDifferenceInHours = Math.floor(
-		(currentTime.getTime() - new Date(user.createdAt).getTime()) / 3600000
+		(currentTime.getTime() - new Date(tweet.createdAt).getTime()) / 3600000
 	);
 
 	return (

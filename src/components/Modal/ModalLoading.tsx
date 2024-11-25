@@ -1,11 +1,12 @@
-import { ModalRootStyled } from "./ModalStyled";
+import { Loader } from './Loader';
+import { ModalRootStyled } from './ModalStyled';
 
 export const ModalLoading = () => {
-    return (
-			<>
-				<ModalRootStyled $backColor='white'>
-					<h1>Carregando...</h1>
-				</ModalRootStyled>
-			</>
-		);
+	return (
+		<>
+			<ModalRootStyled $backColor='white'>
+				<Loader></Loader>
+			</ModalRootStyled>
+		</>
+	);
 };
