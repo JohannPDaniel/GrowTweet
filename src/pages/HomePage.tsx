@@ -26,6 +26,10 @@ export const HomePage = () => {
 		createdAt: new Date(),
 	};
 
+	const handleTweetAdded = (newTweets: TweetTypes) => {
+		setTweets((prevTweets) => [newTweets, ...prevTweets]);
+	};
+
 	useEffect(() => {
 		const fetchData = async () => {
 			if (!headers?.token) {
@@ -49,11 +53,11 @@ export const HomePage = () => {
 		};
 
 		fetchData();
-	}, [] );
-	
+	}, []);
+
 	return (
 		<>
-			<DefaultLayout>
+			<DefaultLayout onTweetAdded={handleTweetAdded}>
 				<PageTitle>Página Inicial</PageTitle>
 				{tweets.length > 0 ? (
 					tweets.map((tweet) => {

@@ -11,8 +11,8 @@ import { TweetContent, TweetTypes } from '../../config/types/tweet.types';
 interface UpsertModalProps {
 	isOpen: boolean;
 	onClose: () => void;
-	onTweetCreated: (data: TweetTypes[]) => void;
-	type?: 'Tweet' | 'Reply'; 
+	onTweetCreated?: ((tweet: TweetTypes) => void) | undefined;
+	type?: 'Tweet' | 'Reply';
 }
 
 export const UpsertModal = ({
@@ -30,35 +30,26 @@ export const UpsertModal = ({
 
 			const body: TweetContent = {
 				content: e.currentTarget.content.value.trim(),
-				type, // Define o tipo do tweet automaticamente
+				type,
 			};
 
-			if (!body.content) {
-				alert('O conteúdo do tweet é obrigatório!');
+			setLoading(true);
+			const response = await createTweet(body, headers);
+			setLoading(false);
+
+			if (!response.success) {
+				alert(response.message);
 				return;
 			}
 
-			setLoading(true);
-
-			try {
-				const response = await createTweet(body, headers);
-				if (!response.success) {
-					alert(response.message);
-					return;
-				}
-
-				onTweetCreated(response.data || []);
-
-				onClose();
-			} catch (error) {
-				console.error('Erro ao criar o tweet:', error);
-				alert('Ocorreu um erro ao criar o tweet.');
-			} finally {
-				setLoading(false);
+			if (response.data && onTweetCreated) {
+				onTweetCreated(response.data); // Garante que apenas um TweetTypes válido será passado
 			}
+
+			onClose();
 		},
 		[type, headers, onTweetCreated, onClose]
-	); 
+	);
 
 	return (
 		<Modal
@@ -75,7 +66,6 @@ export const UpsertModal = ({
 				<BoxStyled
 					name='content'
 					placeholder='O que está acontecendo?'
-					maxLength={280} // Limite de caracteres
 				/>
 				<ButtonSectionStyled
 					$alignItems='baseline'

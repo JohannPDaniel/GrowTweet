@@ -4,7 +4,7 @@ import { api, ResponseApi } from './api.service';
 
 export async function createTweet(body: TweetContent, headers: Headers) {
 	try {
-		const response = await api.post<ResponseApi<TweetTypes[]>>('/tweets', body, {
+		const response = await api.post<ResponseApi<TweetTypes>>('/tweets', body, {
 			headers: {
 				Authorization: headers.token,
 				'x-user-id': headers.userId,

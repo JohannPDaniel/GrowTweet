@@ -13,6 +13,7 @@ import { UpsertModal } from '../../Modal/UpsertModal';
 import { ContainerLogosStyled } from './styled';
 import { ButtonStyled, IconeStyled } from '../Styled';
 import { StyledLinkStyled } from '../Styled/StyledLinkStyled';
+import { TweetTypes } from '../../../config/types/tweet.types'; // Importa o tipo correto para tweets
 
 const icons = [
 	{
@@ -35,7 +36,11 @@ const icons = [
 	},
 ];
 
-export const ContainerLogos = () => {
+interface ContainerLogosProps {
+	onTweetAdded: (tweet: TweetTypes) => void; 
+}
+
+export const ContainerLogos = ({ onTweetAdded }: ContainerLogosProps) => {
 	const navigate = useNavigate();
 	const { pathname } = useLocation();
 
@@ -49,19 +54,14 @@ export const ContainerLogos = () => {
 		}
 	}, [pathname]);
 
-	function handleModal() {
+	const handleModal = () => {
 		setOpenModal(!openModal);
-	}
+	};
 
-	function handleLinkClick(iconLabel: string, path: string) {
+	const handleLinkClick = (iconLabel: string, path: string) => {
 		setActiveIcon(iconLabel);
 		navigate(path);
-	}
-
-	function handleTweetCreated() {
-		console.log('Novo tweet criado com sucesso!');
-		
-	}
+	};
 
 	return (
 		<ContainerLogosStyled>
@@ -96,7 +96,8 @@ export const ContainerLogos = () => {
 				Tweetar
 			</ButtonStyled>
 			<UpsertModal
-				onTweetCreated={handleTweetCreated}
+				type='Tweet'
+				onTweetCreated={onTweetAdded}
 				isOpen={openModal}
 				onClose={handleModal}
 			/>
