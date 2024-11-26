@@ -4,61 +4,73 @@ import { PageTitle } from '../components/Explorer/PageTitle';
 import { Tweet } from '../components/HomePage/Tweet';
 import { ModalLoading } from '../components/Modal/ModalLoading';
 import { DefaultLayout } from '../config/layout/DefaultLayout';
+import { getTweet } from '../config/services/tweet.service';
 import { getUser } from '../config/services/user.service';
+import { TweetTypes } from '../config/types/tweet.types';
 import { User } from '../config/types/User';
 import { getDataHeaders } from '../config/utils/getDataHeaders';
-import { TweetTypes } from '../config/types/tweet.types';
-import { GetTweet } from '../config/services/tweet.service';
 
 export const HomePage = () => {
-	const [user, setUser] = useState<User | null>(null);
-	const [tweet, setTweet] = useState<TweetTypes | null>(null);
+	const [users, setUsers] = useState<User[]>([]);
+	const [tweets, setTweets] = useState<TweetTypes[]>([]);
 	const [loading, setLoading] = useState<boolean>(true);
 	const navigate = useNavigate();
 	const headers = getDataHeaders();
 
+	const fallbackUser: User = {
+		id: '',
+		name: 'Usuário desconhecido',
+		username: 'desconhecido',
+		email: 'desconhecido@example.com',
+		password: '',
+		createdAt: new Date(),
+	};
+
 	useEffect(() => {
-		const fetchUser = async () => {
+		const fetchData = async () => {
 			if (!headers?.token) {
 				navigate('/');
 				return;
 			}
 
 			setLoading(true);
-			const responseUser = await getUser(headers.userId, headers);
-			const responseTweet = await GetTweet(headers.userId, headers);
+			const responseGetUser = await getUser(headers);
+			const responseGetTweet = await getTweet(headers);
 			setLoading(false);
 
-			if (!responseUser.success || !responseTweet.success) {
-				alert(responseUser.message);
+			if (!responseGetUser.success || !responseGetTweet.success) {
+				alert(responseGetUser.message || responseGetTweet.message);
 				navigate('/');
 				return;
 			}
 
-			setUser(responseUser.data || null);
-			setTweet(responseTweet.data || null);
-
-			if (!tweet) {
-				return;
-			}
+			setUsers(responseGetUser.data || []);
+			setTweets(responseGetTweet.data || []);
 		};
 
-		fetchUser();
-	}, [navigate]);
-
+		fetchData();
+	}, [] );
+	
 	return (
 		<>
 			<DefaultLayout>
 				<PageTitle>Página Inicial</PageTitle>
-				{user && tweet && (
-					<Tweet
-						tweet={tweet}
-						user={user}
-						loading={loading}
-					/>
+				{tweets.length > 0 ? (
+					tweets.map((tweet) => {
+						const tweetUser = users.find((user) => user.id === tweet.userId);
+						return (
+							<Tweet
+								key={tweet.id}
+								tweet={tweet}
+								user={tweetUser || fallbackUser}
+								loading={loading}
+							/>
+						);
+					})
+				) : (
+					<p>Nenhum tweet disponível</p>
 				)}
 			</DefaultLayout>
-
 			{loading && <ModalLoading />}
 		</>
 	);

@@ -10,7 +10,7 @@ interface ButtonSectionStyledProps {
 		| 'space-between'
 		| 'space-evenly'
 		| 'initial';
-	$alignItems?: 'flex-end' | 'flex-start' | 'center' | 'initial';
+	$alignItems?: 'flex-end' | 'flex-start' | 'center' | 'baseline' | 'initial';
 }
 
 export const ButtonSectionStyled = styled.div<ButtonSectionStyledProps>`
@@ -51,16 +51,27 @@ export const ButtonSectionStyled = styled.div<ButtonSectionStyledProps>`
 	}};
 	align-items: ${({ $alignItems }) => {
 		switch ($alignItems) {
-			case "flex-end":
-				return "flex-end"
-			case "flex-start":
-				return "flex-start"
-			case "center":
-				return "center"
+			case 'flex-end':
+				return 'flex-end';
+			case 'flex-start':
+				return 'flex-start';
+			case 'center':
+				return 'center';
+			case 'baseline':
+				return 'baseline';
 
 			default:
-				return "initial"
+				return 'initial';
 		}
-}};
+	}};
 	gap: 10px;
+
+	select {
+		width: 100%;
+		height: auto;
+		max-width: 100px;
+		min-height: 25px;
+		max-height: 30px;
+		text-align: center
+	}
 `;

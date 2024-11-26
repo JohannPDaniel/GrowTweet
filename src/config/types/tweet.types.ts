@@ -6,4 +6,4 @@ export interface TweetTypes {
     userId: string;
 }
 
-export type TweetId = Pick<TweetTypes, "id">
+export type TweetContent = Pick<TweetTypes, "content" | "type">

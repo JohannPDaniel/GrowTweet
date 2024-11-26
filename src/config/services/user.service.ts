@@ -2,9 +2,9 @@ import { Headers } from "../types/headers";
 import { User } from '../types/User';
 import { api, ResponseApi } from './api.service';
 
-export async function getUser(userId: string, data: Headers) {
+export async function getUser(data: Headers) {
 	try {
-		const response = await api.get<ResponseApi<User>>(`users/${userId}`, {
+		const response = await api.get<ResponseApi<User[]>>(`/users`, {
 			headers: {
 				Authorization: data.token,
 			},

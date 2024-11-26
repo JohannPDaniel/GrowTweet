@@ -5,11 +5,11 @@ import { PhotoProfileStyled } from '../DefaultLayout/Styled';
 import { MessageTitleStyled } from './Styled/MessageTitleStyled';
 import { MessageStyled, PhotoMessageStyled } from './Styled/PhotoMessageStyled';
 import { UpdateDelete } from './UpdateDelete';
-import { TweetTypes } from "../../config/types/tweet.types";
+import { TweetTypes } from '../../config/types/tweet.types';
 
 interface PhotoMessageProps {
 	user: User;
-	tweet: TweetTypes
+	tweet: TweetTypes;
 	loading: boolean;
 }
 
@@ -17,8 +17,15 @@ export const PhotoMessage = ({ user, tweet }: PhotoMessageProps) => {
 	const [isOpen, setIsOpen] = useState<boolean>(false);
 	const [currentTime, setCurrentTime] = useState<Date>(new Date());
 
-	const toggleDropdown = () => {
-		setIsOpen(!isOpen);
+	const toggleDropdown = (e: React.MouseEvent) => {
+		e.stopPropagation();
+		setIsOpen((prev) => !prev);
+	};
+
+	const closeDropdown = () => {
+		if (isOpen) {
+			setIsOpen(false);
+		}
 	};
 
 	useEffect(() => {
@@ -34,7 +41,7 @@ export const PhotoMessage = ({ user, tweet }: PhotoMessageProps) => {
 	);
 
 	return (
-		<PhotoMessageStyled>
+		<PhotoMessageStyled onClick={closeDropdown}>
 			<PhotoProfileStyled
 				src={iconeLogoGrowdev}
 				alt='imagem da pessoa'
@@ -56,7 +63,7 @@ export const PhotoMessage = ({ user, tweet }: PhotoMessageProps) => {
 						onClose={toggleDropdown}
 					/>
 				</MessageTitleStyled>
-				<p>To de olhooo ein</p>
+				<p>{tweet.content}</p>
 			</MessageStyled>
 		</PhotoMessageStyled>
 	);

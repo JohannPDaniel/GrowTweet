@@ -58,6 +58,11 @@ export const ContainerLogos = () => {
 		navigate(path);
 	}
 
+	function handleTweetCreated() {
+		console.log('Novo tweet criado com sucesso!');
+		
+	}
+
 	return (
 		<ContainerLogosStyled>
 			<img
@@ -85,12 +90,13 @@ export const ContainerLogos = () => {
 			<ButtonStyled
 				$height
 				$marginTop
-				$maxWidth="lg"
+				$maxWidth='lg'
 				$fontSize
 				onClick={handleModal}>
 				Tweetar
 			</ButtonStyled>
 			<UpsertModal
+				onTweetCreated={handleTweetCreated}
 				isOpen={openModal}
 				onClose={handleModal}
 			/>

@@ -94,6 +94,7 @@ export const EqualWidthNavigation = () => {
 			</EqualWidthNavigationStyled>
 
 			<UpsertModal
+				onTweetCreated={() => {}}
 				isOpen={isModalOpen}
 				onClose={() => setIsModalOpen(false)}
 			/>
