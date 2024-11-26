@@ -27,7 +27,7 @@ export const HomePage = () => {
 	};
 
 	const handleTweetAdded = (newTweets: TweetTypes) => {
-		setTweets((prevTweets) => [newTweets, ...prevTweets]);
+		setTweets((prevTweets) => [...prevTweets, newTweets]);
 	};
 
 	useEffect(() => {
