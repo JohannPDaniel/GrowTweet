@@ -5,6 +5,7 @@ export const CloseModalStyled = styled.div`
 	flex-direction: column;
 
 	img {
+		all: unset;
 		width: 100%;
 		height: auto;
 		max-width: 10px;

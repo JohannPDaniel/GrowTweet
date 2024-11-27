@@ -9,10 +9,11 @@ export const UpdateDeleteStyled = styled.div<UpdateDeleteProps>`
 	height: auto;
 	display: flex;
 	align-items: center;
-	justify-content: flex-end;
 	position: relative;
+	justify-content: flex-end;
 
 	img {
+	all: unset;
 		width: 100%;
 		height: auto;
 		max-width: 15px;
@@ -52,5 +53,4 @@ export const UpdateDeleteStyled = styled.div<UpdateDeleteProps>`
 			}
 		}
 	}
-
 `;

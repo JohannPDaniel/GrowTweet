@@ -43,7 +43,7 @@ export const UpsertModal = ({
 			}
 
 			if (response.data && onTweetCreated) {
-				onTweetCreated(response.data); // Garante que apenas um TweetTypes válido será passado
+				onTweetCreated(response.data); 
 			}
 
 			onClose();
