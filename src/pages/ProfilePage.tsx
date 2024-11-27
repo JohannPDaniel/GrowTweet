@@ -11,6 +11,7 @@ import { getUser } from '../config/services/user.service';
 import { TweetTypes } from '../config/types/tweet.types';
 import { User } from '../config/types/User';
 import { getDataHeaders } from '../config/utils/getDataHeaders';
+import NoTweets from "../components/HomePage/NoTweets";
 
 export const ProfilePage = () => {
 	const headers = getDataHeaders();
@@ -20,7 +21,6 @@ export const ProfilePage = () => {
 	const [validateTweet, _setValidateTweet] = useState<TweetTypes | null>(null);
 	const [loading, setLoading] = useState<boolean>(true);
 
-	// Objeto de fallback para Tweet
 	const fallbackTweet: TweetTypes = {
 		id: '',
 		content: 'Nenhum conteúdo disponível',
@@ -95,7 +95,7 @@ export const ProfilePage = () => {
 					/>
 				))
 			) : (
-				<p>Nenhum tweet disponível</p>
+				<NoTweets $minHeight />
 			)}
 		</DefaultLayout>
 	);

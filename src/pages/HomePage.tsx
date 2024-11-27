@@ -9,6 +9,7 @@ import { getUser } from '../config/services/user.service';
 import { TweetTypes } from '../config/types/tweet.types';
 import { User } from '../config/types/User';
 import { getDataHeaders } from '../config/utils/getDataHeaders';
+import NoTweets from "../components/HomePage/NoTweets";
 
 export const HomePage = () => {
 	const [users, setUsers] = useState<User[]>([]);
@@ -21,7 +22,7 @@ export const HomePage = () => {
 
 	const fallbackTweet: TweetTypes = {
 		id: '',
-		content: 'Nenhum conteúdo disponível',
+		content: '',
 		type: 'Tweet',
 		createdAt: new Date().toISOString(),
 		userId: '',
@@ -84,7 +85,7 @@ export const HomePage = () => {
 						);
 					})
 				) : (
-					<p>Nenhum tweet disponível</p>
+					<NoTweets />
 				)}
 			</DefaultLayout>
 			{loading && <ModalLoading />}
