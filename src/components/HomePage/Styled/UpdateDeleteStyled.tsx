@@ -13,7 +13,6 @@ export const UpdateDeleteStyled = styled.div<UpdateDeleteProps>`
 	justify-content: flex-end;
 
 	img {
-	all: unset;
 		width: 100%;
 		height: auto;
 		max-width: 15px;
@@ -30,7 +29,6 @@ export const UpdateDeleteStyled = styled.div<UpdateDeleteProps>`
 		right: 10px;
 		background-color: #f1f1f1;
 		box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-		z-index: 1;
 		cursor: pointer;
 
 		img {
@@ -51,6 +49,19 @@ export const UpdateDeleteStyled = styled.div<UpdateDeleteProps>`
 			&:hover {
 				background-color: #ddd;
 			}
+		}
+	}
+
+	@media screen and (max-width: 480px) {
+		position: relative;
+
+		.dropdown-content {
+			position: absolute;
+
+			img {
+				filter: invert(50%);
+			}
+
 		}
 	}
 `;

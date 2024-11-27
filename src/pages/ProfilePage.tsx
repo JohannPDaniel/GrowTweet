@@ -17,7 +17,17 @@ export const ProfilePage = () => {
 	const navigate = useNavigate();
 	const [user, setUser] = useState<User | null>(null);
 	const [tweets, setTweets] = useState<TweetTypes[]>([]);
+	const [validateTweet, _setValidateTweet] = useState<TweetTypes | null>(null);
 	const [loading, setLoading] = useState<boolean>(true);
+
+	// Objeto de fallback para Tweet
+	const fallbackTweet: TweetTypes = {
+		id: '',
+		content: 'Nenhum conteúdo disponível',
+		type: 'Tweet',
+		createdAt: new Date().toISOString(),
+		userId: '',
+	};
 
 	const fallbackUser: User = {
 		id: '',
@@ -37,7 +47,6 @@ export const ProfilePage = () => {
 
 			setLoading(true);
 
-			setLoading(true);
 			const responseUser = await getUser(headers);
 			const responseTweet = await getTweet(headers);
 			setLoading(false);
@@ -63,33 +72,31 @@ export const ProfilePage = () => {
 	}, []);
 
 	return (
-		<>
-			<DefaultLayout>
-				<PageTitle>
-					<TitleContent />
-					<ProfileLogout
-						$flexDirection
-						$fontSize
-						$border
-						$maxWidth
-						$maxHeight
+		<DefaultLayout tweet={validateTweet || fallbackTweet}>
+			<PageTitle>
+				<TitleContent />
+				<ProfileLogout
+					$flexDirection
+					$fontSize
+					$border
+					$maxWidth
+					$maxHeight
+				/>
+			</PageTitle>
+			{loading ? (
+				<ModalLoading />
+			) : tweets.length > 0 ? (
+				tweets.map((tweet) => (
+					<Tweet
+						key={tweet.id}
+						tweet={tweet}
+						user={user || fallbackUser}
+						loading={loading}
 					/>
-				</PageTitle>
-				{loading ? (
-					<ModalLoading />
-				) : tweets.length > 0 ? (
-					tweets.map((tweet) => (
-						<Tweet
-							key={tweet.id}
-							tweet={tweet}
-							user={user || fallbackUser} 
-							loading={loading}
-						/>
-					))
-				) : (
-					<p>Nenhum tweet disponível</p>
-				)}
-			</DefaultLayout>
-		</>
+				))
+			) : (
+				<p>Nenhum tweet disponível</p>
+			)}
+		</DefaultLayout>
 	);
 };

@@ -11,16 +11,23 @@ import { TweetTypes } from '../types/tweet.types';
 
 interface DefaultLayoutProps {
 	children: React.ReactNode;
-	onTweetAdded?: (tweet: TweetTypes) => void;
+	onTweetAdded?: ( tweet: TweetTypes ) => void;
+	tweet?: TweetTypes
 }
 
 export const DefaultLayout = ({
 	children,
 	onTweetAdded,
+	tweet
 }: DefaultLayoutProps) => {
 	return (
 		<ContainerStyled>
-			<ContainerNav onTweetAdded={onTweetAdded} />
+			{tweet && (
+				<ContainerNav
+					tweet={tweet}
+					onTweetAdded={onTweetAdded}
+				/>
+			)}
 
 			<ContainerContentStyled>{children}</ContainerContentStyled>
 

@@ -4,14 +4,15 @@ import { ContainerLogout } from './ContainerLogout';
 import { ContainerNavStyled } from './styled';
 
 interface ContainerNavProps {
-	onTweetAdded?: (tweet: TweetTypes) => void; 
+	onTweetAdded?: ( tweet: TweetTypes ) => void; 
+	tweet: TweetTypes
 }
 
 
-export const ContainerNav = ({onTweetAdded}: ContainerNavProps) => {
+export const ContainerNav = ({onTweetAdded, tweet}: ContainerNavProps) => {
 	return (
 		<ContainerNavStyled>
-			<ContainerLogos onTweetAdded={onTweetAdded!} />
+			<ContainerLogos tweet={tweet} onTweetAdded={onTweetAdded!} />
 			<ContainerLogout />
 		</ContainerNavStyled>
 	);

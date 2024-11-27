@@ -1,27 +1,39 @@
-import { useState, useCallback } from 'react';
+import { useCallback, useState } from 'react';
 import { iconeX } from '../../assets/Imagens/light_color';
+import { createTweet } from '../../config/services/tweet.service';
+import { TweetContent, TweetTypes } from '../../config/types/tweet.types';
+import { getDataHeaders } from '../../config/utils/getDataHeaders';
 import { ButtonStyled } from '../DefaultLayout/Styled';
 import { Modal } from './Modal';
 import { ButtonSectionStyled, CloseModalStyled } from './ModalStyled';
 import { BoxStyled } from './ModalStyled/BoxStyled';
-import { createTweet } from '../../config/services/tweet.service';
-import { getDataHeaders } from '../../config/utils/getDataHeaders';
-import { TweetContent, TweetTypes } from '../../config/types/tweet.types';
 
 interface UpsertModalProps {
 	isOpen: boolean;
 	onClose: () => void;
-	onTweetCreated?: ((tweet: TweetTypes) => void) | undefined;
+	onTweetCreated: (tweet: TweetTypes) => void;
 	type?: 'Tweet' | 'Reply';
+	tweet?: TweetTypes;
 }
 
 export const UpsertModal = ({
 	isOpen,
 	onClose,
 	onTweetCreated,
+	tweet,
 	type = 'Tweet',
 }: UpsertModalProps) => {
-	const [loading, setLoading] = useState<boolean>(false);
+	const fallback = {
+		id: '',
+		content: '',
+		type: 'Tweet',
+		createdAt: new Date().toISOString(),
+		userId: '',
+	};
+	const [loading, setLoading] = useState(false);
+	const [updatedTweet, setUpdatedTweet] = useState<TweetTypes>(
+		tweet || fallback
+	);
 	const headers = getDataHeaders();
 
 	const submitForm = useCallback(
@@ -37,19 +49,21 @@ export const UpsertModal = ({
 			const response = await createTweet(body, headers);
 			setLoading(false);
 
-			if (!response.success) {
-				alert(response.message);
-				return;
-			}
-
-			if (response.data && onTweetCreated) {
-				onTweetCreated(response.data); 
+			if (response.success && response.data && onTweetCreated) {
+				onTweetCreated(response.data);
 			}
 
 			onClose();
 		},
 		[type, headers, onTweetCreated, onClose]
 	);
+
+	const handleChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+		setUpdatedTweet({
+			...updatedTweet,
+			content: e.target.value,
+		});
+	};
 
 	return (
 		<Modal
@@ -66,13 +80,14 @@ export const UpsertModal = ({
 				<BoxStyled
 					name='content'
 					placeholder='O que está acontecendo?'
+					value={updatedTweet.content || ''}
+					onChange={handleChange}
 				/>
 				<ButtonSectionStyled
 					$alignItems='baseline'
 					$justifyContent='flex-end'>
 					<ButtonStyled
 						type='submit'
-						$height={false}
 						disabled={loading}>
 						{loading ? 'Enviando...' : 'Tweetar'}
 					</ButtonStyled>

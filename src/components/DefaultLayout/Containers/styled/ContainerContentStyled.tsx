@@ -7,6 +7,7 @@ export const ContainerContentStyled = styled.div`
 	overflow-y: auto;
 
 	@media screen and (max-width: 480px) {
+		padding-bottom: 50px;
 		width: 100%;
 	}
 	@media screen and (min-width: 480px) and (max-width: 767px) {
@@ -21,7 +22,7 @@ export const ContainerContentStyled = styled.div`
 		width: 55%;
 	}
 
-	@media screen and (min-width: 1440px)  {
+	@media screen and (min-width: 1440px) {
 		width: 40%;
 	}
 `;

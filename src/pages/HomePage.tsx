@@ -13,9 +13,19 @@ import { getDataHeaders } from '../config/utils/getDataHeaders';
 export const HomePage = () => {
 	const [users, setUsers] = useState<User[]>([]);
 	const [tweets, setTweets] = useState<TweetTypes[]>([]);
+	const [validateTweet, _setValidateTweet] = useState<TweetTypes | null>(null);
+
 	const [loading, setLoading] = useState<boolean>(true);
 	const navigate = useNavigate();
 	const headers = getDataHeaders();
+
+	const fallbackTweet: TweetTypes = {
+		id: '',
+		content: 'Nenhum conteúdo disponível',
+		type: 'Tweet',
+		createdAt: new Date().toISOString(),
+		userId: '',
+	};
 
 	const fallbackUser: User = {
 		id: '',
@@ -57,7 +67,9 @@ export const HomePage = () => {
 
 	return (
 		<>
-			<DefaultLayout onTweetAdded={handleTweetAdded}>
+			<DefaultLayout
+				tweet={validateTweet || fallbackTweet}
+				onTweetAdded={handleTweetAdded}>
 				<PageTitle>Página Inicial</PageTitle>
 				{tweets.length > 0 ? (
 					tweets.map((tweet) => {

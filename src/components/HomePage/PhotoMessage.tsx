@@ -59,6 +59,7 @@ export const PhotoMessage = ({ user, tweet }: PhotoMessageProps) => {
 						</p>
 					</div>
 					<UpdateDelete
+						tweet={tweet}
 						isOpen={isOpen}
 						onClose={toggleDropdown}
 					/>

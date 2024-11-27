@@ -37,10 +37,11 @@ const icons = [
 ];
 
 interface ContainerLogosProps {
-	onTweetAdded: (tweet: TweetTypes) => void; 
+	onTweetAdded: ( tweet: TweetTypes ) => void;
+	tweet: TweetTypes
 }
 
-export const ContainerLogos = ({ onTweetAdded }: ContainerLogosProps) => {
+export const ContainerLogos = ({ onTweetAdded, tweet }: ContainerLogosProps) => {
 	const navigate = useNavigate();
 	const { pathname } = useLocation();
 
@@ -96,6 +97,7 @@ export const ContainerLogos = ({ onTweetAdded }: ContainerLogosProps) => {
 				Tweetar
 			</ButtonStyled>
 			<UpsertModal
+				tweet={tweet}
 				type='Tweet'
 				onTweetCreated={onTweetAdded}
 				isOpen={openModal}

@@ -11,16 +11,16 @@ interface TweetProps {
 }
 
 export const Tweet = ({ user, tweet, loading }: TweetProps) => {
-return (
-	<TweetStyled>
-		{tweet && user && (
-			<PhotoMessage
-				user={user}
-				tweet={tweet}
-				loading={loading}
-			/>
-		)}
-		<LikeReply />
-	</TweetStyled>
-);
+	return (
+		<TweetStyled>
+			{tweet && user && (
+				<PhotoMessage
+					user={user}
+					tweet={tweet}
+					loading={loading}
+				/>
+			)}
+			<LikeReply />
+		</TweetStyled>
+	);
 };
