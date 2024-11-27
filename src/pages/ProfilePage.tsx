@@ -6,19 +6,19 @@ import { Tweet } from '../components/HomePage/Tweet';
 import { ModalLoading } from '../components/Modal/ModalLoading';
 import { TitleContent } from '../components/ProfilePage/TitleContent';
 import { DefaultLayout } from '../config/layout/DefaultLayout';
+import { getTweet } from '../config/services/tweet.service';
 import { getUser } from '../config/services/user.service';
+import { TweetTypes } from '../config/types/tweet.types';
 import { User } from '../config/types/User';
 import { getDataHeaders } from '../config/utils/getDataHeaders';
-import { TweetTypes } from '../config/types/tweet.types';
-import { getTweet } from '../config/services/tweet.service';
 
 export const ProfilePage = () => {
 	const headers = getDataHeaders();
 	const navigate = useNavigate();
-	const [user, setUser] = useState<User | null>(null); // Armazena o usuário logado
-	const [tweets, setTweets] = useState<TweetTypes[]>([]); // Armazena os tweets do usuário
-	const [ loading, setLoading ] = useState<boolean>( true );
-	
+	const [user, setUser] = useState<User | null>(null);
+	const [tweets, setTweets] = useState<TweetTypes[]>([]);
+	const [loading, setLoading] = useState<boolean>(true);
+
 	const fallbackUser: User = {
 		id: '',
 		name: 'Usuário desconhecido',
@@ -28,36 +28,35 @@ export const ProfilePage = () => {
 		createdAt: new Date(),
 	};
 
-
 	useEffect(() => {
 		const fetchData = async () => {
 			if (!headers?.token) {
-				navigate('/'); 
+				navigate('/');
 				return;
 			}
 
-			setLoading( true );
-			
-				setLoading(true)
-				const responseUser = await getUser(headers);
-				const responseTweet = await getTweet(headers);
-				setLoading(false)
+			setLoading(true);
 
-				if (!responseUser.success || !responseTweet.success) {
-					alert(responseUser.message || responseTweet.message);
-					navigate('/');
-					return;
-				}
+			setLoading(true);
+			const responseUser = await getUser(headers);
+			const responseTweet = await getTweet(headers);
+			setLoading(false);
 
-				const loggedInUser = responseUser.data?.find(
-					(u: User) => u.id === headers.userId
-				);
-				setUser(loggedInUser || null);
+			if (!responseUser.success || !responseTweet.success) {
+				alert(responseUser.message || responseTweet.message);
+				navigate('/');
+				return;
+			}
 
-				const userTweets = responseTweet.data?.filter(
-					(tweet: TweetTypes) => tweet.userId === headers.userId
-				);
-				setTweets(userTweets || []);
+			const loggedInUser = responseUser.data?.find(
+				(u: User) => u.id === headers.userId
+			);
+			setUser(loggedInUser || null);
+
+			const userTweets = responseTweet.data?.filter(
+				(tweet: TweetTypes) => tweet.userId === headers.userId
+			);
+			setTweets(userTweets || []);
 		};
 
 		fetchData();
@@ -73,6 +72,7 @@ export const ProfilePage = () => {
 						$fontSize
 						$border
 						$maxWidth
+						$maxHeight
 					/>
 				</PageTitle>
 				{loading ? (
@@ -82,7 +82,7 @@ export const ProfilePage = () => {
 						<Tweet
 							key={tweet.id}
 							tweet={tweet}
-							user={user || fallbackUser} // Passa o usuário logado para cada tweet
+							user={user || fallbackUser} 
 							loading={loading}
 						/>
 					))

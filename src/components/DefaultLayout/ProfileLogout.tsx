@@ -6,13 +6,15 @@ interface ProfileLogoutProps {
 	$fontSize?: boolean;
 	$border?: boolean;
 	$maxWidth?: boolean;
+	$maxHeight?: boolean
 }
 
 export const ProfileLogout = ({
 	$flexDirection,
     $fontSize,
     $border,
-    $maxWidth
+	$maxWidth,
+	$maxHeight
 }: ProfileLogoutProps) => {
 	return (
 		<ProfileLogoutStyled
@@ -20,7 +22,8 @@ export const ProfileLogout = ({
 			$fontSize={$fontSize}>
 			<PhotoProfileStyled
 				$border={$border}
-				$maxWidth={$maxWidth}
+				$maxWidth={ $maxWidth }
+				$maxHeight={$maxHeight}
 				src={iconeLogoGrowdev}
 				alt='Logo Growdev'
 			/>

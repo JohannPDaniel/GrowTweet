@@ -26,27 +26,79 @@ export const MessageTitleStyled = styled.div`
 		align-items: center;
 	}
 
-	/* @media screen and (min-width: 320px) and (max-width: 374px) {
-        gap: 100px
-    }
+	@media screen and (min-width: 320px) and (max-width: 374px) {
+		align-items: flex-start;
 
-    @media screen and (min-width: 375px) and (max-width: 424px) {
-        gap: 150px
-    }
+		> div {
+			all: unset;
+			display: flex;
+			flex-direction: column;
+			align-items: flex-start;
+		}
 
-    @media screen and (min-width: 425px) and (max-width: 767px) {
-        gap: 200px
-    }
+		> div p {
+			margin-bottom: 5px;
+		}
 
-    @media screen and (min-width: 768px) and (max-width: 1023px) {
-        gap: 125px
-    }
+		> div strong {
+			font-size: 18px;
+		}
+	}
 
-    @media screen and (min-width: 1024px) and (max-width: 1439px) {
-        gap: 310px
-    }
+	@media screen and (min-width: 375px) and (max-width: 424px) {
+		align-items: flex-start;
 
-    @media screen and (min-width: 1440px) {
-        gap: 300px
-    } */
+		> div {
+			all: unset;
+			display: flex;
+			flex-direction: column;
+			align-items: flex-start;
+		}
+
+		> div p {
+			margin-bottom: 5px;
+		}
+
+		> div strong {
+			font-size: 18px;
+		}
+	}
+
+	@media screen and (min-width: 425px) and (max-width: 767px) {
+		align-items: flex-start;
+
+		> div {
+			all: unset;
+			display: flex;
+			flex-direction: column;
+			align-items: flex-start;
+		}
+
+		> div p {
+			margin-bottom: 5px;
+		}
+
+		> div strong {
+			font-size: 18px;
+		}
+	}
+
+	@media screen and (min-width: 768px) and (max-width: 1023px) {
+		align-items: flex-start;
+
+		> div {
+			all: unset;
+			display: flex;
+			flex-direction: column;
+			align-items: flex-start;
+		}
+
+		> div p {
+			margin-bottom: 5px;
+		}
+
+		> div strong {
+			font-size: 18px;
+		}
+	}
 `;
