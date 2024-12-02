@@ -11,9 +11,10 @@ interface PhotoMessageProps {
 	user: User;
 	tweet: TweetTypes;
 	loading: boolean;
+	onTweetUpdated: (updatedTweet: TweetTypes) => void;
 }
 
-export const PhotoMessage = ({ user, tweet }: PhotoMessageProps) => {
+export const PhotoMessage = ({ user, tweet, onTweetUpdated }: PhotoMessageProps) => {
 	const [isOpen, setIsOpen] = useState<boolean>(false);
 	const [currentTime, setCurrentTime] = useState<Date>(new Date());
 
@@ -62,6 +63,7 @@ export const PhotoMessage = ({ user, tweet }: PhotoMessageProps) => {
 						tweet={tweet}
 						isOpen={isOpen}
 						onClose={toggleDropdown}
+						onTweet={onTweetUpdated}
 					/>
 				</MessageTitleStyled>
 				<p>{tweet.content}</p>

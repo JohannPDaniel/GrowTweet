@@ -30,15 +30,23 @@ export const HomePage = () => {
 
 	const fallbackUser: User = {
 		id: '',
-		name: 'Usuário desconhecido',
-		username: 'desconhecido',
-		email: 'desconhecido@example.com',
+		name: '',
+		username: '',
+		email: '',
 		password: '',
 		createdAt: new Date(),
 	};
 
 	const handleTweetAdded = (newTweets: TweetTypes) => {
 		setTweets((prevTweets) => [...prevTweets, newTweets]);
+	};
+
+	const handleTweetUpdated = (updatedTweet: TweetTypes) => {
+		setTweets((prevTweets) =>
+			prevTweets.map((tweet) =>
+				tweet.id === updatedTweet.id ? updatedTweet : tweet
+			)
+		);
 	};
 
 	useEffect(() => {
@@ -81,6 +89,7 @@ export const HomePage = () => {
 								tweet={tweet}
 								user={tweetUser || fallbackUser}
 								loading={loading}
+								onTweetUpdated={handleTweetUpdated}
 							/>
 						);
 					})

@@ -1,16 +1,17 @@
-import { PhotoMessage } from './PhotoMessage';
-import { LikeReply } from './LikeReply';
-import { TweetStyled } from './Styled/TweetStyled';
-import { User } from '../../config/types/User';
-import { TweetTypes } from '../../config/types/tweet.types';
+import { TweetTypes } from "../../config/types/tweet.types";
+import { User } from "../../config/types/User";
+import { LikeReply } from "./LikeReply";
+import { PhotoMessage } from "./PhotoMessage";
+import { TweetStyled } from "./Styled/TweetStyled";
 
 interface TweetProps {
 	user: User;
 	tweet: TweetTypes;
 	loading: boolean;
+	onTweetUpdated: (updatedTweet: TweetTypes) => void; 
 }
 
-export const Tweet = ({ user, tweet, loading }: TweetProps) => {
+export const Tweet = ({ user, tweet, loading, onTweetUpdated }: TweetProps) => {
 	return (
 		<TweetStyled>
 			{tweet && user && (
@@ -18,6 +19,7 @@ export const Tweet = ({ user, tweet, loading }: TweetProps) => {
 					user={user}
 					tweet={tweet}
 					loading={loading}
+					onTweetUpdated={onTweetUpdated} // Passa o callback para PhotoMessage
 				/>
 			)}
 			<LikeReply />

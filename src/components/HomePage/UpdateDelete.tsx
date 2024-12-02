@@ -40,7 +40,7 @@ export const UpdateDelete = ({
 	const [actionType, setActionType] = useState<'edit' | 'delete' | null>(null);
 
 	const openEditModal = () => {
-		setActionType('edit'); // Define a ação como "editar"
+		setActionType('edit'); 
 		setIsOpenModalUpdate(true);
 	};
 
@@ -89,7 +89,7 @@ export const UpdateDelete = ({
 					tweet={tweet}
 					onTweetCreated={(updatedTweet) => {
 						if (onTweet) {
-							onTweet(updatedTweet);
+							onTweet(updatedTweet); // Atualiza o tweet no estado
 						}
 						closeModalUpdate();
 					}}

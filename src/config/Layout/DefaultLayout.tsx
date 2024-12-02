@@ -15,6 +15,14 @@ interface DefaultLayoutProps {
 	tweet?: TweetTypes
 }
 
+const defaultTweet: TweetTypes = {
+	id: "",
+    content: "",
+    type: "",
+    createdAt: new Date().toLocaleDateString(),
+    userId: ""
+};
+
 export const DefaultLayout = ({
 	children,
 	onTweetAdded,
@@ -22,12 +30,10 @@ export const DefaultLayout = ({
 }: DefaultLayoutProps) => {
 	return (
 		<ContainerStyled>
-			{tweet && (
-				<ContainerNav
-					tweet={tweet}
-					onTweetAdded={onTweetAdded}
-				/>
-			)}
+			<ContainerNav
+				tweet={tweet ?? defaultTweet}
+				onTweetAdded={onTweetAdded}
+			/>
 
 			<ContainerContentStyled>{children}</ContainerContentStyled>
 

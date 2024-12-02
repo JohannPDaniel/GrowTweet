@@ -7,7 +7,7 @@ export const LikeReplyStyled = styled.div`
 	> div {
 		display: flex;
 		gap: 4px;
-		margin-left: 45px;
+		margin-left: 51px;
 
         &:last-child {
             margin-left: 20px;

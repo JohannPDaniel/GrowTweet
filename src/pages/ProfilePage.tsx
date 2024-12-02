@@ -23,7 +23,7 @@ export const ProfilePage = () => {
 
 	const fallbackTweet: TweetTypes = {
 		id: '',
-		content: 'Nenhum conteúdo disponível',
+		content: '',
 		type: 'Tweet',
 		createdAt: new Date().toISOString(),
 		userId: '',

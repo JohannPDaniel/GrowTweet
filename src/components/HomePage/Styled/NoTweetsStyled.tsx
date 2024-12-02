@@ -4,7 +4,6 @@ interface NoTweetsStyledProps {
 	$minHeight?: boolean;
 }
 
-// Animação para o pulo e a transição de cores
 const jumpAnimation = keyframes`
     0%, 100% {
         transform: translateY(0);

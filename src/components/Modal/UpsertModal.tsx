@@ -1,6 +1,6 @@
 import { useCallback, useState } from 'react';
 import { iconeX } from '../../assets/Imagens/light_color';
-import { createTweet } from '../../config/services/tweet.service';
+import { createTweet, putTweet } from '../../config/services/tweet.service';
 import { TweetContent, TweetTypes } from '../../config/types/tweet.types';
 import { getDataHeaders } from '../../config/utils/getDataHeaders';
 import { ButtonStyled } from '../DefaultLayout/Styled';
@@ -30,34 +30,43 @@ export const UpsertModal = ({
 		createdAt: new Date().toISOString(),
 		userId: '',
 	};
+
 	const [loading, setLoading] = useState(false);
 	const [updatedTweet, setUpdatedTweet] = useState<TweetTypes>(
 		tweet || fallback
 	);
 	const headers = getDataHeaders();
 
-	const submitForm = useCallback(
-		async (e: React.FormEvent<HTMLFormElement>) => {
-			e.preventDefault();
+const submitForm = useCallback(
+	async (e: React.FormEvent<HTMLFormElement>) => {
+		e.preventDefault();
 
-			const body: TweetContent = {
-				content: e.currentTarget.content.value.trim(),
-				type,
-			};
+		const body: TweetContent = {
+			content: updatedTweet.content.trim(),
+			type,
+		};
 
-			setLoading(true);
-			const response = await createTweet(body, headers);
-			setLoading(false);
+		setLoading(true);
 
-			if (response.success && response.data && onTweetCreated) {
-				onTweetCreated(response.data);
-			}
+		let response;
+		if (updatedTweet.id) {
+			// Atualizar tweet existente
+			response = await putTweet(updatedTweet.id, body.content, headers);
+		} else {
+			// Criar novo tweet
+			response = await createTweet(body, headers);
+		}
 
-			onClose();
-		},
-		[type, headers, onTweetCreated, onClose]
-	);
+		setLoading(false);
 
+		if (response.success && response.data && onTweetCreated) {
+			onTweetCreated(response.data); // Passa o tweet atualizado para o callback
+		}
+
+		onClose();
+	},
+	[type, headers, onTweetCreated, onClose, updatedTweet]
+);
 	const handleChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
 		setUpdatedTweet({
 			...updatedTweet,

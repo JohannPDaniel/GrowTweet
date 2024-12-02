@@ -16,11 +16,12 @@ export const ProfileLogoutStyled = styled.div<ProfileLogoutProps>`
 
 	div {
 		p:first-child {
-			font-size: ${({ $fontSize }) => ($fontSize ? '34px' : '12px')};
+			font-size: ${( { $fontSize } ) => ( $fontSize ? '34px' : '14px' )};
+			font-weight: 600;
 		}
 
 		p:last-child {
-			font-size: ${({ $fontSize }) => ($fontSize ? '14px' : '12px')};
+			font-size: ${({ $fontSize }) => ($fontSize ? '14px' : '14px')};
 			color: #828282;
 			margin: 0;
 		}
