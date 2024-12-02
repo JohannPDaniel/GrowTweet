@@ -63,13 +63,34 @@ export async function putTweet(id: string, content: string, headers: Headers) {
 			data: response.data.data,
 		};
 	} catch (error: any) {
-		console.error(
-			'Erro ao atualizar o tweet:',
-			error.response?.data || error.message
-		);
 		return {
-			success: error.response?.data?.success || false,
-			message: `Erro: ${error.response?.data?.message || 'Erro desconhecido'}`,
+			success: error.response.data.success,
+			message: error.response.data.message,
+			data: error.response.data.data,
+		};
+	}
+}
+export async function deleteTweet(id: string, headers: Headers) {
+	try {
+		const response = await api.delete<ResponseApi<TweetTypes>>(
+			`/tweets/${id}`,
+			{
+				headers: {
+					Authorization: headers.token,
+				},
+			}
+		);
+
+		return {
+			success: response.data.success,
+			message: response.data.message,
+			data: response.data.data,
+		};
+	} catch (error: any) {
+		return {
+			success: error.response.data.success,
+			message: error.response.data.message,
+			data: error.response.data.data,
 		};
 	}
 }

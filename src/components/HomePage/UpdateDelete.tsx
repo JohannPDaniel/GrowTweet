@@ -7,6 +7,7 @@ import {
 import { UpsertModal } from '../Modal/UpsertModal';
 import { UpdateDeleteStyled } from './Styled/UpdateDeleteStyled';
 import { TweetTypes } from '../../config/types/tweet.types';
+import { DeleteModal } from '../Modal/DeleteModal';
 
 const upletes = [
 	{
@@ -28,6 +29,7 @@ interface UpdateDeleteProps {
 	onClose?: (e: React.MouseEvent) => void;
 	onTweet?: (tweet: TweetTypes) => void;
 	tweet?: TweetTypes;
+	onTweetDeleted: (deletedTweetId: string) => void;
 }
 
 export const UpdateDelete = ({
@@ -35,12 +37,14 @@ export const UpdateDelete = ({
 	onClose,
 	onTweet,
 	tweet,
+	onTweetDeleted,
 }: UpdateDeleteProps) => {
 	const [isOpenModalUpdate, setIsOpenModalUpdate] = useState(false);
+	const [isOpenModalDelete, setIsOpenModalDelete] = useState(false);
 	const [actionType, setActionType] = useState<'edit' | 'delete' | null>(null);
 
 	const openEditModal = () => {
-		setActionType('edit'); 
+		setActionType('edit');
 		setIsOpenModalUpdate(true);
 	};
 
@@ -49,14 +53,21 @@ export const UpdateDelete = ({
 		setActionType(null);
 	};
 
+	const openDeleteModal = () => {
+		setActionType('delete');
+		setIsOpenModalDelete(true);
+	};
+
+	const closeDeleteModal = () => {
+		setIsOpenModalDelete(false);
+		setActionType(null);
+	};
+
 	const handleAction = (action: 'edit' | 'delete') => {
 		if (action === 'edit') {
 			openEditModal();
 		} else if (action === 'delete') {
-			setActionType('delete');
-			if (onTweet && tweet) {
-				onTweet(tweet);
-			}
+			openDeleteModal();
 		}
 	};
 
@@ -81,18 +92,25 @@ export const UpdateDelete = ({
 					</div>
 				))}
 			</div>
-
-			{actionType === 'edit' && (
+			{actionType === 'edit' && tweet && (
 				<UpsertModal
 					isOpen={isOpenModalUpdate}
 					onClose={closeModalUpdate}
 					tweet={tweet}
 					onTweetCreated={(updatedTweet) => {
 						if (onTweet) {
-							onTweet(updatedTweet); // Atualiza o tweet no estado
+							onTweet(updatedTweet);
 						}
 						closeModalUpdate();
 					}}
+				/>
+			)}
+			{actionType === 'delete' && tweet && (
+				<DeleteModal
+					isOpen={isOpenModalDelete}
+					onClose={closeDeleteModal}
+					tweetId={tweet.id}
+					onTweetDeleted={onTweetDeleted}
 				/>
 			)}
 		</UpdateDeleteStyled>

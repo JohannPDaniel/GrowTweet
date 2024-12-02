@@ -8,10 +8,17 @@ interface TweetProps {
 	user: User;
 	tweet: TweetTypes;
 	loading: boolean;
-	onTweetUpdated: (updatedTweet: TweetTypes) => void; 
+	onTweetUpdated: (updatedTweet: TweetTypes) => void;
+	onTweetDeleted: (deletedTweetId: string) => void;
 }
 
-export const Tweet = ({ user, tweet, loading, onTweetUpdated }: TweetProps) => {
+export const Tweet = ({
+	user,
+	tweet,
+	loading,
+	onTweetUpdated,
+	onTweetDeleted,
+}: TweetProps) => {
 	return (
 		<TweetStyled>
 			{tweet && user && (
@@ -19,7 +26,8 @@ export const Tweet = ({ user, tweet, loading, onTweetUpdated }: TweetProps) => {
 					user={user}
 					tweet={tweet}
 					loading={loading}
-					onTweetUpdated={onTweetUpdated} // Passa o callback para PhotoMessage
+					onTweetUpdated={onTweetUpdated}
+					onTweetDeleted={onTweetDeleted}
 				/>
 			)}
 			<LikeReply />

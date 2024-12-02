@@ -46,6 +46,20 @@ export const ProfilePage = () => {
 		);
 	};
 
+const handleTweetDeleted = (deletedTweetId: string) => {
+	setTweets((prevTweets) => {
+		const updatedTweets = [...prevTweets];
+		const index = updatedTweets.findIndex(
+			(tweet) => tweet.id === deletedTweetId
+		);
+		if (index !== -1) {
+			updatedTweets.splice(index, 1);
+		}
+		return updatedTweets;
+	});
+};
+
+
 	useEffect(() => {
 		const fetchData = async () => {
 			if (!headers?.token) {
@@ -101,6 +115,7 @@ export const ProfilePage = () => {
 						user={user || fallbackUser}
 						loading={loading}
 						onTweetUpdated={handleTweetUpdated}
+						onTweetDeleted={handleTweetDeleted} // Passa a função para o Tweet
 					/>
 				))
 			) : (

@@ -37,36 +37,36 @@ export const UpsertModal = ({
 	);
 	const headers = getDataHeaders();
 
-const submitForm = useCallback(
-	async (e: React.FormEvent<HTMLFormElement>) => {
-		e.preventDefault();
+	const submitForm = useCallback(
+		async (e: React.FormEvent<HTMLFormElement>) => {
+			e.preventDefault();
 
-		const body: TweetContent = {
-			content: updatedTweet.content.trim(),
-			type,
-		};
+			const body: TweetContent = {
+				content: updatedTweet.content.trim(),
+				type,
+			};
 
-		setLoading(true);
+			setLoading(true);
 
-		let response;
-		if (updatedTweet.id) {
-			// Atualizar tweet existente
-			response = await putTweet(updatedTweet.id, body.content, headers);
-		} else {
-			// Criar novo tweet
-			response = await createTweet(body, headers);
-		}
+			let response;
+			if (updatedTweet?.id) {
+				response = await putTweet(updatedTweet.id, body.content, headers);
+			} else {
+				response = await createTweet(body, headers);
+			}
 
-		setLoading(false);
+			setLoading(false);
 
-		if (response.success && response.data && onTweetCreated) {
-			onTweetCreated(response.data); // Passa o tweet atualizado para o callback
-		}
+			if (!response.success) {
+				alert(response.message);
+			} else {
+				onTweetCreated(response.data);
+			}
 
-		onClose();
-	},
-	[type, headers, onTweetCreated, onClose, updatedTweet]
-);
+			onClose();
+		},
+		[type, headers, onTweetCreated, onClose, updatedTweet]
+	);
 	const handleChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
 		setUpdatedTweet({
 			...updatedTweet,

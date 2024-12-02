@@ -49,6 +49,20 @@ export const HomePage = () => {
 		);
 	};
 
+const handleTweetDeleted = (deletedTweetId: string) => {
+	setTweets((prevTweets) => {
+		const updatedTweets = [...prevTweets];
+		const index = updatedTweets.findIndex(
+			(tweet) => tweet.id === deletedTweetId
+		);
+		if (index !== -1) {
+			updatedTweets.splice(index, 1);
+		}
+		return updatedTweets; 
+	});
+};
+
+
 	useEffect(() => {
 		const fetchData = async () => {
 			if (!headers?.token) {
@@ -90,6 +104,7 @@ export const HomePage = () => {
 								user={tweetUser || fallbackUser}
 								loading={loading}
 								onTweetUpdated={handleTweetUpdated}
+								onTweetDeleted={handleTweetDeleted}
 							/>
 						);
 					})
