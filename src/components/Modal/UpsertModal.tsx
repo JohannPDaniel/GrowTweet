@@ -1,4 +1,4 @@
-import { useCallback, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { iconeX } from '../../assets/Imagens/light_color';
 import { createTweet, putTweet } from '../../config/services/tweet.service';
 import { TweetContent, TweetTypes } from '../../config/types/tweet.types';
@@ -32,10 +32,19 @@ export const UpsertModal = ({
 	};
 
 	const [loading, setLoading] = useState(false);
-	const [updatedTweet, setUpdatedTweet] = useState<TweetTypes>(
-		tweet || fallback
-	);
+	const [updatedTweet, setUpdatedTweet] = useState<TweetTypes>({
+		...fallback,
+		type,
+	});
 	const headers = getDataHeaders();
+
+	useEffect(() => {
+		if (tweet) {
+			setUpdatedTweet(tweet);
+		} else {
+			setUpdatedTweet({ ...fallback, type });
+		}
+	}, [tweet, type]);
 
 	const submitForm = useCallback(
 		async (e: React.FormEvent<HTMLFormElement>) => {
@@ -63,10 +72,11 @@ export const UpsertModal = ({
 				onTweetCreated(response.data);
 			}
 
-			onClose();
+			handleClose();
 		},
-		[type, headers, onTweetCreated, onClose, updatedTweet]
+		[type, headers, onTweetCreated, updatedTweet]
 	);
+
 	const handleChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
 		setUpdatedTweet({
 			...updatedTweet,
@@ -74,16 +84,21 @@ export const UpsertModal = ({
 		});
 	};
 
+	const handleClose = () => {
+		setUpdatedTweet({ ...fallback, type });
+		onClose();
+	};
+
 	return (
 		<Modal
 			isOpen={isOpen}
-			onClose={onClose}>
+			onClose={handleClose}>
 			<form onSubmit={submitForm}>
 				<CloseModalStyled>
 					<img
 						src={iconeX}
 						alt='Icone de Fechar'
-						onClick={onClose}
+						onClick={handleClose}
 					/>
 				</CloseModalStyled>
 				<BoxStyled

@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { PageTitle } from '../components/Explorer/PageTitle';
+import { NoTweets } from '../components/HomePage/NoTweets';
 import { Tweet } from '../components/HomePage/Tweet';
 import { ModalLoading } from '../components/Modal/ModalLoading';
 import { DefaultLayout } from '../config/layout/DefaultLayout';
@@ -9,7 +10,6 @@ import { getUser } from '../config/services/user.service';
 import { TweetTypes } from '../config/types/tweet.types';
 import { User } from '../config/types/User';
 import { getDataHeaders } from '../config/utils/getDataHeaders';
-import NoTweets from "../components/HomePage/NoTweets";
 
 export const HomePage = () => {
 	const [users, setUsers] = useState<User[]>([]);
@@ -49,19 +49,18 @@ export const HomePage = () => {
 		);
 	};
 
-const handleTweetDeleted = (deletedTweetId: string) => {
-	setTweets((prevTweets) => {
-		const updatedTweets = [...prevTweets];
-		const index = updatedTweets.findIndex(
-			(tweet) => tweet.id === deletedTweetId
-		);
-		if (index !== -1) {
-			updatedTweets.splice(index, 1);
-		}
-		return updatedTweets; 
-	});
-};
-
+	const handleTweetDeleted = (deletedTweetId: string) => {
+		setTweets((prevTweets) => {
+			const updatedTweets = [...prevTweets];
+			const index = updatedTweets.findIndex(
+				(tweet) => tweet.id === deletedTweetId
+			);
+			if (index !== -1) {
+				updatedTweets.splice(index, 1);
+			}
+			return updatedTweets;
+		});
+	};
 
 	useEffect(() => {
 		const fetchData = async () => {

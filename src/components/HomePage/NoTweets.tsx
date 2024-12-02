@@ -5,7 +5,7 @@ interface NoTweets {
     $minHeight?: boolean
 }
 
-const NoTweets = ({$minHeight}: NoTweets) => {
+export const NoTweets = ({$minHeight}: NoTweets) => {
 	const text = 'Nenhum Tweet';
 
 	return (
@@ -22,5 +22,3 @@ const NoTweets = ({$minHeight}: NoTweets) => {
 		</NoTweetsStyled>
 	);
 };
-
-export default NoTweets;
