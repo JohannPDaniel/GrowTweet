@@ -11,7 +11,7 @@ import { getUser } from '../config/services/user.service';
 import { TweetTypes } from '../config/types/tweet.types';
 import { User } from '../config/types/User';
 import { getDataHeaders } from '../config/utils/getDataHeaders';
-import NoTweets from "../components/HomePage/NoTweets";
+import NoTweets from '../components/HomePage/NoTweets';
 
 export const ProfilePage = () => {
 	const headers = getDataHeaders();
@@ -36,6 +36,14 @@ export const ProfilePage = () => {
 		email: 'desconhecido@example.com',
 		password: '',
 		createdAt: new Date(),
+	};
+
+	const handleTweetUpdated = (updatedTweet: TweetTypes) => {
+		setTweets((prevTweets) =>
+			prevTweets.map((tweet) =>
+				tweet.id === updatedTweet.id ? updatedTweet : tweet
+			)
+		);
 	};
 
 	useEffect(() => {
@@ -92,6 +100,7 @@ export const ProfilePage = () => {
 						tweet={tweet}
 						user={user || fallbackUser}
 						loading={loading}
+						onTweetUpdated={handleTweetUpdated}
 					/>
 				))
 			) : (
