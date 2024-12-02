@@ -11,22 +11,22 @@ import { TweetTypes } from '../types/tweet.types';
 
 interface DefaultLayoutProps {
 	children: React.ReactNode;
-	onTweetAdded?: (tweet: TweetTypes) => void;
-	tweet?: TweetTypes;
+	onTweetAdded?: ( tweet: TweetTypes ) => void;
+	tweet?: TweetTypes
 }
 
 const defaultTweet: TweetTypes = {
-	id: '',
-	content: '',
-	type: '',
+	id: "",
+    content: "",
+    type: "",
 	createdAt: new Date().toLocaleDateString(),
-	userId: '',
+    userId: ""
 };
 
 export const DefaultLayout = ({
 	children,
 	onTweetAdded,
-	tweet,
+	tweet
 }: DefaultLayoutProps) => {
 	return (
 		<ContainerStyled>
