@@ -13,9 +13,10 @@ import { getDataHeaders } from '../config/utils/getDataHeaders';
 
 export const HomePage = () => {
 	const [users, setUsers] = useState<User[]>([]);
+	const [user, setUser] = useState<User | null>(null);
 	const [tweets, setTweets] = useState<TweetTypes[]>([]);
-	const [ currentTweet, _setCurrentTweet ] = useState<TweetTypes | null>( null );
-	const [isOpen, setIsOpen] = useState(false)
+	const [currentTweet, _setCurrentTweet] = useState<TweetTypes | null>(null);
+	const [isOpen, setIsOpen] = useState(false);
 
 	const [loading, setLoading] = useState<boolean>(true);
 	const navigate = useNavigate();
@@ -39,8 +40,8 @@ export const HomePage = () => {
 	};
 
 	const handleModal = () => {
-		setIsOpen(!isOpen)
-	}
+		setIsOpen(!isOpen);
+	};
 
 	const handleTweetAdded = (newTweet: TweetTypes) => {
 		setTweets((prevTweets) => {
@@ -88,15 +89,21 @@ export const HomePage = () => {
 				return;
 			}
 
+			const loggedInUser = responseGetUser.data?.find(
+				(user: User) => user.id === headers.userId
+			);
+
 			const tweets = responseGetTweet.data || [];
 			const sortedTweets = tweets.sort(
 				(a: TweetTypes, b: TweetTypes) =>
 					new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
 			);
-
+			setUser(loggedInUser || null);
 			setUsers(responseGetUser.data || []);
 			setTweets(sortedTweets);
 		};
+
+		console.log(user);
 
 		fetchData();
 	}, []);
@@ -106,6 +113,7 @@ export const HomePage = () => {
 			<DefaultLayout
 				isOpen={isOpen}
 				onClose={handleModal}
+				user={user ?? fallbackUser}
 				tweet={currentTweet || fallbackTweet}
 				onTweetAdded={handleTweetAdded}>
 				<PageTitle>Página Inicial</PageTitle>

@@ -1,4 +1,5 @@
 import { iconeLogoGrowdev } from '../../assets/Imagens/light_color';
+import { User } from "../../config/types/User";
 import { ProfileLogoutStyled, PhotoProfileStyled } from './Styled';
 
 interface ProfileLogoutProps {
@@ -6,30 +7,46 @@ interface ProfileLogoutProps {
 	$fontSize?: boolean;
 	$border?: boolean;
 	$maxWidth?: boolean;
+	$maxW?: boolean;
 	$maxHeight?: boolean
+	user: User
 }
+
+	const fallbackUser: User = {
+		id: '',
+		name: 'Usuário desconhecido',
+		username: 'desconhecido',
+		email: 'desconhecido@example.com',
+		password: '',
+		createdAt: new Date(),
+	};
+
 
 export const ProfileLogout = ({
 	$flexDirection,
     $fontSize,
     $border,
 	$maxWidth,
-	$maxHeight
-}: ProfileLogoutProps) => {
+	$maxW,
+	$maxHeight,
+	user
+}: ProfileLogoutProps ) => {
+	
 	return (
 		<ProfileLogoutStyled
+			$maxW={$maxW}
 			$flexDirection={$flexDirection}
 			$fontSize={$fontSize}>
 			<PhotoProfileStyled
 				$border={$border}
-				$maxWidth={ $maxWidth }
+				$maxWidth={$maxWidth}
 				$maxHeight={$maxHeight}
 				src={iconeLogoGrowdev}
 				alt='Logo Growdev'
 			/>
 			<div>
-				<p>Growdev</p>
-				<p>@Grow</p>
+				<p>{user.name ?? fallbackUser}</p>
+				<p>@{user.username ?? fallbackUser}</p>
 			</div>
 		</ProfileLogoutStyled>
 	);

@@ -8,11 +8,13 @@ import {
 	ContainerStyled,
 } from '../../components/DefaultLayout/Containers/styled';
 import { TweetTypes } from '../types/tweet.types';
+import { User } from "../types/User";
 
 interface DefaultLayoutProps {
 	children: React.ReactNode;
 	onTweetAdded?: (tweet: TweetTypes) => void;
 	tweet?: TweetTypes;
+	user?: User
 	isOpen?: boolean
 	onClose?: () => void
 }
@@ -29,12 +31,15 @@ export const DefaultLayout = ({
 	children,
 	onTweetAdded,
 	tweet,
+	user,
 	isOpen,
 	onClose
 }: DefaultLayoutProps ) => {
+	
 	return (
 		<ContainerStyled>
 			<ContainerNav
+				user={user}
 				tweet={tweet ?? fallbackTweet}
 				onTweetAdded={onTweetAdded}
 			/>

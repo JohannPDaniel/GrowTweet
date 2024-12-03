@@ -1,8 +1,16 @@
 import { Link } from "react-router-dom";
 import { iconeSeta } from "../../assets/Imagens/light_color";
 import { TitleContentStyled } from "./styled/TitleContentStyled";
+import { User } from "../../config/types/User";
+import { TweetTypes } from "../../config/types/tweet.types";
 
-export const TitleContent = () => {
+interface TitleContentProps {
+	tweet?: TweetTypes;
+	user?: User;
+	tweetCount: number;
+}
+
+export const TitleContent = ({ tweetCount, user }: TitleContentProps) => {
 	return (
 		<TitleContentStyled>
 			<div>
@@ -15,10 +23,10 @@ export const TitleContent = () => {
 			</div>
 			<div>
 				<p>
-					Perfil de <span>@Grow</span>
+					Perfil de <span>@{user?.username}</span>
 				</p>
 				<p>
-					<span>X</span> Tweets
+					<span>{tweetCount}</span> Tweets
 				</p>
 			</div>
 		</TitleContentStyled>

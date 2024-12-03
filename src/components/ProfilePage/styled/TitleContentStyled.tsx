@@ -24,7 +24,7 @@ export const TitleContentStyled = styled.div`
 	}
 
 	p:last-child {
-		font-size: 10px;
+		font-size: 14px;
         font-weight: 300;
 		color: #8a8282;
 	}
