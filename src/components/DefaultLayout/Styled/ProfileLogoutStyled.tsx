@@ -12,7 +12,6 @@ export const ProfileLogoutStyled = styled.div<ProfileLogoutProps>`
 	display: flex;
 	flex-direction: ${({ $flexDirection }) =>
 	$flexDirection ? 'column' : 'row'};
-	justify-content: flex-end;
 	gap: 5px;
 
 	>div {

@@ -103,8 +103,6 @@ export const HomePage = () => {
 			setTweets(sortedTweets);
 		};
 
-		console.log(user);
-
 		fetchData();
 	}, []);
 
