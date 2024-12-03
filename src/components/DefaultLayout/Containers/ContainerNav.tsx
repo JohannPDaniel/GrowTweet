@@ -8,11 +8,15 @@ interface ContainerNavProps {
 	tweet: TweetTypes
 }
 
-
 export const ContainerNav = ({onTweetAdded, tweet}: ContainerNavProps) => {
 	return (
 		<ContainerNavStyled>
-			<ContainerLogos tweet={tweet} onTweetAdded={onTweetAdded!} />
+			{onTweetAdded &&(
+				<ContainerLogos
+					tweet={tweet}
+					onTweetAdded={onTweetAdded}
+				/>
+			)}
 			<ContainerLogout />
 		</ContainerNavStyled>
 	);

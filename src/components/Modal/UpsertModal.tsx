@@ -13,7 +13,7 @@ interface UpsertModalProps {
 	onClose: () => void;
 	onTweetCreated: (tweet: TweetTypes) => void;
 	type?: 'Tweet' | 'Reply';
-	tweet?: TweetTypes;
+	tweet: TweetTypes;
 }
 
 export const UpsertModal = ({

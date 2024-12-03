@@ -12,7 +12,8 @@ import {
 } from '../../../assets/Imagens/light_color';
 import { UpsertModal } from '../../Modal/UpsertModal';
 import { EqualWidthNavigationStyled } from './styled/EqualWidthNavigationStyled';
-import { LogoutModal } from "../../Modal/LogoutModal";
+import { LogoutModal } from '../../Modal/LogoutModal';
+import { TweetTypes } from '../../../config/types/tweet.types';
 
 const navigations = [
 	{
@@ -41,34 +42,41 @@ const navigations = [
 	},
 ];
 
-export const EqualWidthNavigation = () => {
-	const [isModalOpen, setIsModalOpen] = useState(false);
-	const [isCloseModalOpen, setIsCloseModalOpen] = useState(false);
-	const [isTweet, setIsTweet] = useState(false);
+interface EqualWidthNavigationProps {
+	tweet?: TweetTypes;
+	onTweetCreated?: ( tweet: TweetTypes ) => void
+	isOpen: boolean;
+	onClose: () => void
+}
+
+const fallbackTweet: TweetTypes = {
+	id: '',
+	content: '',
+	type: '',
+	createdAt: new Date().toLocaleDateString(),
+	userId: '',
+};
+
+
+export const EqualWidthNavigation = ({tweet, onTweetCreated, isOpen, onClose}: EqualWidthNavigationProps) => {
+	const [isTweetModalOpen, _setIsTweetModalOpen] = useState(false);
+	const [isLogoutModalOpen, setIsLogoutModalOpen] = useState(false);
 
 	const { pathname } = useLocation();
 	const activeIndex = useMemo(() => {
 		return navigations.findIndex((nav) => nav.to === pathname);
 	}, [pathname]);
 
-	const handleModal = () => {
-		setIsModalOpen(!isModalOpen);
-		setIsTweet(!isTweet);
-	};
 
-	const closeModal = (navAlt: string) => {
-		if (navAlt === 'Sair') {
-			setIsCloseModalOpen(true);
-		} else {
-			setIsTweet(!isTweet);
-		}
+	const handleLogoutClick = () => {
+		setIsLogoutModalOpen(true);
 	};
 
 	return (
 		<>
 			<EqualWidthNavigationStyled
-				$backgroundColor={isTweet}
-				$filter={isTweet}>
+				$backgroundColor={isTweetModalOpen}
+				$filter={isTweetModalOpen}>
 				{navigations.map((nav, index) => (
 					<Link
 						to={nav.to}
@@ -79,29 +87,32 @@ export const EqualWidthNavigation = () => {
 						<img
 							src={activeIndex === index ? nav.activeImage : nav.icone}
 							alt={nav.alt}
-							onClick={() => closeModal(nav.alt)}
+							onClick={nav.alt === 'Sair' ? handleLogoutClick : undefined}
 						/>
 					</Link>
 				))}
 
-				<button>
+				<button onClick={onClose}>
 					<img
 						src={iconeResponder}
 						alt='icone de responder'
-						onClick={handleModal}
 					/>
 				</button>
 			</EqualWidthNavigationStyled>
 
 			<UpsertModal
-				onTweetCreated={() => {}}
-				isOpen={isModalOpen}
-				onClose={() => setIsModalOpen(false)}
+				tweet={tweet || fallbackTweet}
+				isOpen={isOpen}
+				onClose={onClose}
+				onTweetCreated={(tweet) => {
+					if (onTweetCreated) {
+						onTweetCreated(tweet);
+					}
+				}}
 			/>
-
 			<LogoutModal
-				isOpen={isCloseModalOpen}
-				onClose={() => setIsCloseModalOpen(false)}
+				isOpen={isLogoutModalOpen}
+				onClose={() => setIsLogoutModalOpen(false)}
 			/>
 		</>
 	);

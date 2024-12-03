@@ -11,35 +11,42 @@ import { TweetTypes } from '../types/tweet.types';
 
 interface DefaultLayoutProps {
 	children: React.ReactNode;
-	onTweetAdded?: ( tweet: TweetTypes ) => void;
-	tweet?: TweetTypes
+	onTweetAdded?: (tweet: TweetTypes) => void;
+	tweet?: TweetTypes;
+	isOpen?: boolean
+	onClose?: () => void
 }
 
-const defaultTweet: TweetTypes = {
-	id: "",
-    content: "",
-    type: "",
+const fallbackTweet: TweetTypes = {
+	id: '',
+	content: '',
+	type: '',
 	createdAt: new Date().toLocaleDateString(),
-    userId: ""
+	userId: '',
 };
 
 export const DefaultLayout = ({
 	children,
 	onTweetAdded,
-	tweet
-}: DefaultLayoutProps) => {
+	tweet,
+	isOpen,
+	onClose
+}: DefaultLayoutProps ) => {
 	return (
 		<ContainerStyled>
 			<ContainerNav
-				tweet={tweet ?? defaultTweet}
+				tweet={tweet ?? fallbackTweet}
 				onTweetAdded={onTweetAdded}
 			/>
-
 			<ContainerContentStyled>{children}</ContainerContentStyled>
-
 			<ContainerNews />
 
-			<EqualWidthNavigation />
+			<EqualWidthNavigation
+				isOpen={isOpen ?? true}
+				onClose={onClose ?? (() => {})}
+				onTweetCreated={onTweetAdded}
+				tweet={tweet}
+			/>
 		</ContainerStyled>
 	);
 };

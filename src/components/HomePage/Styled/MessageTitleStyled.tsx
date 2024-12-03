@@ -87,7 +87,6 @@ export const MessageTitleStyled = styled.div`
 		align-items: flex-start;
 
 		> div {
-			all: unset;
 			display: flex;
 			flex-direction: column;
 			align-items: flex-start;
