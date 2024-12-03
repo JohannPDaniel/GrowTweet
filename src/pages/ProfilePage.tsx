@@ -19,7 +19,9 @@ export const ProfilePage = () => {
 	const [users, setUsers] = useState<User[]>([]);
 	const [tweets, setTweets] = useState<TweetTypes[]>([]);
 	const [validateTweet, _setValidateTweet] = useState<TweetTypes | null>(null);
-	const [loading, setLoading] = useState<boolean>(true);
+	const [ loading, setLoading ] = useState<boolean>( true );
+		const [isOpen, setIsOpen] = useState(false);
+
 
 	const fallbackTweet: TweetTypes = {
 		id: '',
@@ -38,8 +40,13 @@ export const ProfilePage = () => {
 		createdAt: new Date(),
 	};
 
+		const handleModal = () => {
+			setIsOpen(!isOpen);
+		};
+
+
 	const handleTweetCreated = (newTweet: TweetTypes) => {
-		setTweets((prevTweets) => [newTweet, ...prevTweets]); // Adiciona o novo tweet no início da lista
+		setTweets((prevTweets) => [newTweet, ...prevTweets]); 
 	};
 
 
@@ -91,6 +98,8 @@ export const ProfilePage = () => {
 
 	return (
 		<DefaultLayout
+			isOpen={isOpen}
+			onClose={handleModal}
 			tweet={validateTweet || fallbackTweet}
 			onTweetAdded={handleTweetCreated}>
 			<PageTitle>
